@@ -129,6 +129,10 @@ function attachSocket(record,onText,onClose) {
         sendFrame(record.socket,payload,10);
         continue;
       }
+      if (opcode === 10) {
+        record.isAlive = true;
+        continue;
+      }
       if (opcode === 1) onText(payload.toString('utf8'));
     }
   });
@@ -240,11 +244,27 @@ server.on('upgrade',(req,socket) => {
     '',
     ''
   ].join('\r\n'));
-  const record = {id:`server-${Date.now()}-${Math.random().toString(36).slice(2)}`,socket,meta:{}};
+  const record = {id:`server-${Date.now()}-${Math.random().toString(36).slice(2)}`,socket,meta:{},isAlive:true};
   attachSocket(record,raw => handleMessage(record,raw),() => {
     if (record.clientId && clients.get(record.clientId) === record) clients.delete(record.clientId);
   });
 });
+
+setInterval(() => {
+  clients.forEach(record => {
+    if (!record.socket || record.socket.destroyed) {
+      if (record.clientId && clients.get(record.clientId) === record) clients.delete(record.clientId);
+      return;
+    }
+    if (record.isAlive === false) {
+      record.socket.destroy();
+      if (record.clientId && clients.get(record.clientId) === record) clients.delete(record.clientId);
+      return;
+    }
+    record.isAlive = false;
+    sendFrame(record.socket,'',9);
+  });
+},30000);
 
 server.listen(port,host,() => {
   const localHost = host === '0.0.0.0' ? 'localhost' : host;
