@@ -6,6 +6,7 @@ const crypto = require('crypto');
 const root = __dirname;
 const portArgIndex = process.argv.indexOf('--port');
 const port = Number(process.env.PORT || (portArgIndex >= 0 ? process.argv[portArgIndex + 1] : 8080)) || 8080;
+const host = process.env.HOST || '0.0.0.0';
 const clients = new Map();
 
 const mime = {
@@ -245,7 +246,8 @@ server.on('upgrade',(req,socket) => {
   });
 });
 
-server.listen(port,() => {
-  console.log(`Ambassador office server running at http://localhost:${port}/homepage-ui.html`);
-  console.log(`Intercom WebSocket ready at ws://localhost:${port}/intercom-signal`);
+server.listen(port,host,() => {
+  const localHost = host === '0.0.0.0' ? 'localhost' : host;
+  console.log(`Ambassador office server running at http://${localHost}:${port}/homepage-ui.html`);
+  console.log(`Intercom WebSocket ready at ws://${localHost}:${port}/intercom-signal`);
 });

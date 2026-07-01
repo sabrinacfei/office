@@ -1,0 +1,13 @@
+{
+  "name": "ambassador-office",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ambassador office kiosk with live intercom signaling.",
+  "scripts": {
+    "start": "node intercom-server.js",
+    "check": "node --check intercom-server.js && node --check js/homepage.js && node --check js/live-intercom.js && node --check js/intercom.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
