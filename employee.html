@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMBASSADOR 國賓影城｜員工專區</title>
+  <link rel="stylesheet" href="css/visitor.css?v=20260624-44">
+  <link rel="stylesheet" href="css/employee.css?v=202606302055">
+  <link rel="stylesheet" href="css/employee-menu.css?v=20260625-2">
+  <link rel="stylesheet" href="css/kiosk-animations.css?v=20260624-2">
+</head>
+<body class="employee-body">
+  <div class="kiosk-stage"><div class="kiosk-screen"><div class="employee-canvas">
+    <header class="visitor-header employee-header">
+      <button class="back-button" id="backButton" type="button">‹ 返回首頁</button>
+        <div class="page-title">
+
+            <svg class="title-icon" viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M8 15h32v25H8zM16 15v-5h16v5M8 23h32M20 27h8"/>
+            </svg>
+
+            <div>
+                <strong>員工專區</strong>
+                <small>EMPLOYEE HUB</small>
+            </div>
+
+        </div>
+      <div class="header-time employee-clock"><span id="currentTime">--:--</span><small id="currentDate">2025/05/28（三）</small></div>
+    </header>
+
+    <main class="employee-main" id="employeeMain">
+      <section id="hubView" class="employee-panel-view hub-view active" aria-hidden="false">
+        <article class="employee-hero-card">
+          <span class="eyebrow">STAFF ONLY</span>
+          <h1>員工專屬服務</h1>
+          <p>選擇員工福利、電影優惠、排班公告，或提交設備與現場問題回報。</p>
+          <img src="images/Popcorn-removebg-preview.png" alt="" class="hero-popcorn" aria-hidden="true">
+        </article>
+
+        <div class="hub-grid">
+          <button class="hub-card staff-card" type="button" data-action="benefits">
+            <span>員工福利</span>
+            <small>福利活動、合作商家與公告</small>
+          </button>
+          <button class="hub-card movie-card featured" type="button" data-action="movie">
+            <span>員工電影優惠</span>
+            <small>本週上映、員工票價 $180</small>
+          </button>
+          <button class="hub-card schedule-card" type="button" data-action="schedule">
+            <span>排班公告</span>
+            <small>重要公告、活動班表與內部提醒</small>
+          </button>
+          <button class="hub-card friend-card" type="button" data-action="bulk">
+            <span>申報維修</span>
+            <small>設備異常、清潔環境與顧客事件回報</small>
+          </button>
+        </div>
+      </section>
+
+      <section id="benefitView" class="employee-panel-view benefit-view welfare-view" aria-hidden="true">
+        <div class="welfare-frame">
+          <div class="welfare-topbar">
+            <button class="round-back" type="button" data-back="hub">‹</button>
+            <div>
+              <h1>國賓影城員工福利中心</h1>
+              <p>各項福利一次掌握！</p>
+            </div>
+            <div class="welfare-clock"><strong data-welfare-time>--:--</strong><span>2025/05/28（三）</span></div>
+          </div>
+
+          <div class="welfare-home">
+            <div class="welfare-copy">
+              <span class="eyebrow">EMPLOYEE BENEFITS</span>
+              <h2>員工福利中心</h2>
+              <p>合作商家、生日禮、活動公告與員工專屬優惠都在這裡。</p>
+            </div>
+            <img src="images/Employee＿gifts.png" alt="" class="welfare-gift-art" aria-hidden="true">
+            <div class="welfare-menu">
+              <button class="welfare-menu-card" type="button" data-benefit-action="partners">
+                <span class="welfare-icon store"><img src="images/Partner＿Merchants.png" alt=""></span>
+                <div><strong>合作商家</strong><small>多家品牌優惠，出示 QR Code 折抵</small></div>
+                <b>›</b>
+              </button>
+              <button class="welfare-menu-card" type="button" data-benefit-action="birthday">
+                <span class="welfare-icon cake"><img src="images/Birthday.png" alt=""></span>
+                <div><strong>生日禮卡</strong><small>查看本月生日禮，輸入工號領取</small></div>
+                <b>›</b>
+              </button>
+              <button class="welfare-menu-card" type="button" data-benefit-action="notice">
+                <span class="welfare-icon notice"><img src="images/Welfare.png" alt=""></span>
+                <div><strong>福利公告／活動</strong><small>員工活動、旅遊與各項公告</small></div>
+                <b>›</b>
+              </button>
+            </div>
+            <button class="welfare-home-button" type="button" data-back="hub">返回首頁</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="partnerListView" class="employee-panel-view welfare-view" aria-hidden="true">
+        <div class="welfare-frame">
+          <div class="welfare-topbar">
+            <button class="round-back" type="button" data-back="benefits">‹</button>
+            <div><h1>合作商家卡</h1><p>公開瀏覽優惠內容，取得 QR Code 前需完成身分驗證。</p></div>
+            <div class="welfare-clock"><strong data-welfare-time>--:--</strong><span>2025/05/28（三）</span></div>
+          </div>
+          <div class="partner-tabs" id="partnerTabs"></div>
+          <div class="partner-list" id="partnerList"></div>
+        </div>
+      </section>
+
+      <section id="partnerDetailView" class="employee-panel-view welfare-view" aria-hidden="true">
+        <div class="welfare-frame">
+          <div class="welfare-topbar">
+            <button class="round-back" type="button" data-back="partnerList">‹</button>
+            <div><h1>合作商家卡</h1><p id="partnerDetailSubtitle">查看優惠內容與適用門市。</p></div>
+            <div class="welfare-clock"><strong data-welfare-time>--:--</strong><span>2025/05/28（三）</span></div>
+          </div>
+          <article class="partner-detail-card">
+            <div class="partner-detail-head">
+              <img id="partnerDetailLogo" src="" alt="">
+              <div><h2 id="partnerDetailTitle">Starbucks</h2><p id="partnerDetailOffer">全飲品 85 折</p></div>
+              <img id="partnerDetailHero" src="images/Starbucks_drinks.png" alt="" class="partner-detail-art">
+            </div>
+            <dl class="partner-detail-list">
+              <div><dt>優惠內容</dt><dd id="partnerDetailContent"></dd></div>
+              <div><dt>適用門市</dt><dd id="partnerDetailStores"></dd></div>
+              <div><dt>使用方式</dt><dd>出示下方 QR Code 給店員掃描即可享優惠</dd></div>
+              <div><dt>有效期限</dt><dd id="partnerDetailDate"></dd></div>
+            </dl>
+            <button class="welfare-primary" id="getPartnerQrButton" type="button">取得優惠 QR Code</button>
+          </article>
+        </div>
+      </section>
+
+      <section id="employeeVerifyView" class="employee-panel-view welfare-view" aria-hidden="true">
+        <div class="welfare-frame">
+          <div class="welfare-topbar">
+            <button class="round-back" type="button" data-back="partnerDetail">‹</button>
+            <div><h1>身分驗證</h1><p>請輸入工號，以取得您的專屬優惠 QR Code。</p></div>
+            <div class="welfare-clock"><strong data-welfare-time>--:--</strong><span>2025/05/28（三）</span></div>
+          </div>
+          <div class="verify-panel">
+            <h2>請輸入工號</h2>
+            <p id="verifySubtitle">以取得您的專屬優惠 QR Code</p>
+            <input id="benefitEmployeeId" type="text" inputmode="numeric" placeholder="請輸入工號" readonly>
+            <div class="number-pad" id="benefitKeypad"></div>
+            <label class="remember-line"><input id="rememberEmployeeId" type="checkbox"> 本月記住我，下次免輸入</label>
+            <p class="verify-error" id="benefitVerifyError" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="benefitQrView" class="employee-panel-view welfare-view" aria-hidden="true">
+        <div class="welfare-frame">
+          <div class="welfare-topbar">
+            <button class="round-back" type="button" data-back="partnerList">‹</button>
+            <div><h1 id="qrPageTitle">專屬優惠 QR Code</h1><p>出示給店員即可享優惠。</p></div>
+            <div class="welfare-clock"><strong data-welfare-time>--:--</strong><span>2025/05/28（三）</span></div>
+          </div>
+          <div class="qr-panel">
+            <span class="eyebrow">EXCLUSIVE QR CODE</span>
+            <h2>專屬優惠 QR Code</h2>
+            <p id="qrOfferText">出示給店員即可享優惠</p>
+              <div class="generated-qr qr-image-box" aria-label="專屬優惠 QR Code">
+                <img src="images/QRcode.png" alt="生日禮 QR Code">
+              </div>
+            <div class="qr-validity"><span>有效期限</span><strong id="qrExpireTime">2025/05/28 10:30:00</strong><b id="qrCountdown">04:59</b></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="birthdayView" class="employee-panel-view welfare-view birthday-landing" aria-hidden="true">
+        <div class="welfare-frame birthday-frame">
+
+          <div class="birthday-showcase">
+            <img src="images/彩帶.png" alt="" class="birthday-confetti-art">
+            <div class="birthday-left">
+              <div class="birthday-heading">
+                <img src="images/cake.png" alt="" class="birthday-cake-art">
+                <div>
+                  <h2>本月生日禮</h2>
+                  <p>六月份壽星專屬禮物</p>
+                </div>
+              </div>
+
+              <div class="birthday-info-list">
+                <div class="birthday-info-row">
+                    <span class="birthday-info-icon">
+                      <img src="images/人頭.png" alt="">
+                    </span>
+                  <div>
+                    <strong>有效資格</strong>
+                    <small>當月壽星員工</small>
+                  </div>
+                </div>
+
+                <div class="birthday-info-row">
+                    <span class="birthday-info-icon">
+                      <img src="images/日期.png" alt="">
+                    </span>
+                  <div>
+                    <strong>領取期限</strong>
+                    <small>2025/06/01 ~ 2025/06/30</small>
+                  </div>
+                </div>
+              </div>
+
+              <button class="birthday-main-button" type="button" data-benefit-action="birthdayVerify">
+                查看我的生日禮
+                <span>›</span>
+              </button>
+            </div>
+
+            <div class="birthday-gift-stage">
+              <article class="birthday-gift-item">
+                <img src="images/Employee_welfare_popcorn.png" alt="">
+                <strong>中份爆米花</strong>
+                <small>— 乙份 —</small>
+              </article>
+
+              <article class="birthday-gift-item">
+                <img src="images/Beverage_discounts.png" alt="">
+                <strong>中杯飲料</strong>
+                <small>— 乙杯 —</small>
+              </article>
+
+              <article class="birthday-gift-item">
+                <img src="images/Employee_movie_tickets.png" alt="">
+                <strong>電影票</strong>
+                <small>— 乙張 —</small>
+              </article>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="birthdayVerifyView" class="employee-panel-view welfare-view" aria-hidden="true">
+        <div class="welfare-frame">
+          <div class="welfare-topbar">
+            <button class="round-back" type="button" data-back="birthday">‹</button>
+            <div><h1>我的生日禮</h1><p>請輸入工號，查詢您的專屬生日禮。</p></div>
+            <div class="welfare-clock"><strong data-welfare-time>--:--</strong><span>2025/05/28（三）</span></div>
+          </div>
+          <div class="verify-panel">
+            <h2>請輸入工號</h2>
+            <p>查詢您的專屬生日禮</p>
+            <input id="birthdayEmployeeId" type="text" inputmode="numeric" placeholder="請輸入工號" readonly>
+            <div class="number-pad" id="birthdayKeypad"></div>
+            <p class="verify-error" id="birthdayVerifyError" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="birthdayResultView" class="employee-panel-view welfare-view" aria-hidden="true">
+        <div class="welfare-frame birthday-result-frame">
+
+          <div class="birthday-result-card">
+            <div class="birthday-result-left">
+              <button class="round-back birthday-inner-back" type="button" data-back="birthday">‹</button>
+
+              <span class="eyebrow">BIRTHDAY REWARD</span>
+
+              <div class="birthday-status-pill">六月生日禮尚未領取</div>
+
+              <h2>生日禮可領取</h2>
+
+              <p id="birthdayResultText" class="birthday-result-desc">
+                員工 1111，六月生日禮尚未領取。
+              </p>
+
+              <div class="birthday-info-list">
+                <div>
+                  <b>有效資格</b>
+                  <span>六月壽星員工</span>
+                </div>
+                <div>
+                  <b>領取期限</b>
+                  <span>2025/06/01 - 2025/06/30</span>
+                </div>
+              </div>
+
+              <button class="welfare-primary birthday-claim-btn" type="button" data-benefit-action="birthdayQr">
+                顯示領取 QR Code
+              </button>
+            </div>
+
+            <div class="birthday-result-right">
+              <img src="images/cake.png" alt="" class="birthday-cake-art" aria-hidden="true">
+
+              <div class="birthday-gifts compact">
+                <article>
+                  <img src="images/Employee_welfare_popcorn.png" alt="">
+                  <strong>中份爆米花</strong>
+                  <small>乙份</small>
+                </article>
+
+                <article>
+                  <img src="images/Beverage_discounts.png" alt="">
+                  <strong>中杯飲料</strong>
+                  <small>乙杯</small>
+                </article>
+
+                <article>
+                  <img src="images/Employee_movie_tickets.png" alt="">
+                  <strong>電影票</strong>
+                  <small>乙張</small>
+                </article>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="benefitNoticeView" class="employee-panel-view welfare-view benefit-notice-view" aria-hidden="true">
+        <div class="welfare-frame notice-dashboard">
+          <div class="notice-dashboard-head">
+            <div class="notice-brand">
+              <img src="images/movie.png" alt="">
+              <div>
+                <strong>國賓影城員工專區</strong>
+                <small>AMBASSADOR THEATRES</small>
+              </div>
+            </div>
+            <div class="notice-head-actions">
+              <button type="button" data-back="hub">首頁</button>
+              <button type="button" data-back="benefits">員工福利中心</button>
+              <button type="button" data-back="hub">登出</button>
+            </div>
+          </div>
+
+          <div class="notice-dashboard-grid">
+            <article class="notice-hero-panel">
+              <span>HOT</span>
+              <h2>員工電影日</h2>
+              <p>本週五 18:30 準時開場</p>
+              <small>免費電影票 + 爆米花 + 飲料</small>
+              <button type="button" data-action="movie">立即查看</button>
+              <img src="images/員工電影加購餐點.png" alt="" class="notice-hero-popcorn">
+            </article>
+
+            <section class="notice-panel latest-panel">
+              <header><h2>最新公告</h2><button type="button">查看全部 ›</button></header>
+              <div class="notice-list">
+                <article><img src="images/announcement.png" alt=""><div><b>消防演練</b><span>6/28（六）14:00</span><small>請全體員工準時參與</small></div><time>05/25</time></article>
+                <article><img src="images/Partner＿Merchants.png" alt=""><div><b>員工旅遊 報名中</b><span>花蓮・太魯閣兩日遊</span><small>報名至 06/15 截止</small></div><time>05/24</time></article>
+                <article><img src="images/staff.png" alt=""><div><b>新制服公告</b><span>2025 夏季制服即將上線</span><small>詳細資訊請點擊查看</small></div><time>05/20</time></article>
+              </div>
+            </section>
+
+            <section class="notice-panel deadline-panel">
+              <header><h2>即將截止</h2><button type="button">查看全部 ›</button></header>
+              <article><div><b>健康檢查</b><span>報名截止日 2025/06/01</span></div><strong>3<small>天</small></strong></article>
+              <article><div><b>員工旅遊</b><span>報名截止日 2025/06/15</span></div><strong>15<small>天</small></strong></article>
+              <article><div><b>電影包場活動</b><span>報名截止日 2025/06/20</span></div><strong>20<small>天</small></strong></article>
+            </section>
+
+            <section class="notice-panel monthly-panel">
+              <header><h2>本月福利</h2><button type="button">更多福利 ›</button></header>
+              <article><img src="images/Birthday.png" alt=""><div><b>六月生日禮</b><span>爆米花 + 中杯飲料</span></div><button type="button" data-benefit-action="birthday">立即領取 ›</button></article>
+              <article><img src="images/Employee_movie_tickets.png" alt=""><div><b>電影票優惠</b><span>指定電影票 5 折起</span></div><button type="button" data-benefit-action="partners">查看優惠 ›</button></article>
+              <article><img src="images/Partner＿Merchants.png" alt=""><div><b>合作商家優惠</b><span>多家品牌優惠進行中</span></div><button type="button" data-benefit-action="partners">查看優惠 ›</button></article>
+            </section>
+
+            <section class="notice-panel event-panel">
+              <header><h2>近期活動</h2><button type="button">查看行事曆 ›</button></header>
+              <article><time><b>06</b><span>JUN</span></time><div><b>健康講座</b><span>6/06（五）13:30</span><small>國賓影城 8F 大會議室</small></div><img src="images/announcement.png" alt=""></article>
+              <article><time><b>15</b><span>JUN</span></time><div><b>員工電影欣賞</b><span>6/15（日）18:30</span><small>國賓影城 長春廣場</small></div><img src="images/movie.png" alt=""></article>
+              <article><time><b>25</b><span>JUN</span></time><div><b>員工聚餐</b><span>6/25（三）18:00</span><small>饗食天堂 信義店</small></div><img src="images/Employee_dinner.png" alt=""></article>
+            </section>
+
+            <section class="notice-panel subsidy-panel">
+              <header><h2>常駐福利</h2><button type="button">更多福利 ›</button></header>
+              <article><img src="images/Scheduling.png" alt=""><b>交通補助</b><span>每月核發<br>最高 1,500 元</span></article>
+              <article><img src="images/staff.png" alt=""><b>通訊補助</b><span>每月核發<br>最高 600 元</span></article>
+              <article><img src="images/happy.png" alt=""><b>健康檢查</b><span>年度免費<br>健康檢查</span></article>
+              <article><img src="images/Employee_movie_tickets.png" alt=""><b>教育訓練</b><span>多元課程<br>持續成長</span></article>
+            </section>
+
+            <section class="notice-panel merchant-panel">
+              <header><h2>合作商家精選</h2><button type="button" data-benefit-action="partners">查看全部 ›</button></header>
+              <article><img src="images/Starbucks_Coffee.svg.png" alt=""><b>Starbucks</b><span>全飲品 85 折</span></article>
+              <article><img src="images/uniqlo.svg.png" alt=""><b>UNIQLO</b><span>全館商品 95 折</span></article>
+              <article><img src="images/McDonald's.png" alt=""><b>麥當勞</b><span>指定套餐優惠</span></article>
+              <article><img src="images/nike.png" alt=""><b>Nike</b><span>指定商品 9 折</span></article>
+            </section>
+          </div>
+
+          <div class="notice-footer-strip">
+            <div><b>專屬推薦</b><span>星光卡會員獨享：每週二電影票買一送一</span></div>
+            <button type="button" data-benefit-action="partners"><span>▦</span> 掃描 QR Code<br><small>查看更多福利與優惠</small></button>
+          </div>
+        </div>
+      </section>
+
+      <section id="scheduleView" class="employee-panel-view schedule-view" aria-hidden="true">
+        <div class="staff-board-page">
+          <header class="staff-board-header">
+            <button class="staff-board-back" type="button" data-back="hub">‹ 返回首頁</button>
+
+            <div class="staff-board-title">
+              <span class="staff-board-title-icon" aria-hidden="true">
+                <img src="images/班表.png" alt="">
+              </span>
+              <div>
+                <h1>員工專區</h1>
+                <p>EMPLOYEE HUB</p>
+              </div>
+            </div>
+
+            <div class="staff-board-time">
+              <strong data-welfare-time>--:--</strong>
+              <span>2025/06/26（四）</span>
+            </div>
+          </header>
+
+          <div class="staff-board-grid">
+            <section class="staff-panel today-panel">
+              <div class="staff-panel-title">
+                <span><img src="images/班表.png" alt=""></span>
+                <h2>排班公告</h2>
+                <p>今日班表 / 重要公告 / 活動班表 / 內部提醒</p>
+              </div>
+
+              <div class="today-shifts">
+                <div class="today-shifts-head">
+                  <h3>今日班表</h3>
+                  <time>6 / 26（四）</time>
+                </div>
+
+                <article class="shift-card morning">
+                  <img src="images/早班.png" alt="">
+                  <div class="shift-main">
+                    <h4>早班</h4>
+                    <p><strong>09:00 - 17:00</strong></p>
+                    <p>櫃台 / 接待區</p>
+                    <small>⌖ 1F 櫃台區</small>
+                  </div>
+                  <div class="shift-staff">
+                    <span>值班主管 <b>王小明</b></span>
+                    <span>值班人員 <em>林小美</em><em>陳大宇</em></span>
+                  </div>
+                </article>
+
+                <article class="shift-card noon">
+                  <img src="images/中班.png" alt="">
+                  <div class="shift-main">
+                    <h4>中班</h4>
+                    <p><strong>13:00 - 21:00</strong></p>
+                    <p>服務台</p>
+                    <small>⌖ 1F 服務台</small>
+                  </div>
+                  <div class="shift-staff">
+                    <span>值班主管 <b>李安</b></span>
+                    <span>值班人員 <em>張庭</em><em>許庭瑄</em></span>
+                  </div>
+                </article>
+
+                <article class="shift-card night">
+                  <img src="images/晚班.png" alt="">
+                  <div class="shift-main">
+                    <h4>晚班</h4>
+                    <p><strong>17:00 - 22:00</strong></p>
+                    <p>值班櫃台</p>
+                    <small>⌖ 1F 值班櫃台</small>
+                  </div>
+                  <div class="shift-staff">
+                    <span>值班主管 <b>許庭瑄</b></span>
+                    <span>值班人員 <em>王小明</em><em>張庭</em></span>
+                  </div>
+                </article>
+
+                <p class="shift-note">
+                  <img src="images/公告.png" alt="">
+                  請準時到班，並做好交接工作！
+                </p>
+              </div>
+            </section>
+
+            <section class="staff-panel notice-panel">
+              <div class="staff-panel-title compact">
+                <span><img src="images/提醒.png" alt=""></span>
+                <h2>重要公告</h2>
+                <button type="button">查看全部 ›</button>
+              </div>
+
+              <div class="notice-list">
+                <article>
+                  <b>重要</b>
+                  <strong>5/25（六）門市營業時間調整</strong>
+                  <p>因內部活動，5/25（六）營業時間調整為 <em>10:00 - 18:00</em>，請同仁留意。</p>
+                  <time>05 / 22</time>
+                </article>
+                <article>
+                  <b>重要</b>
+                  <strong>6 月份排班已更新</strong>
+                  <p>6 月份最新排班已公布，請同仁前往查看，如有問題請聯繫主管。</p>
+                  <time>05 / 20</time>
+                </article>
+                <article>
+                  <b>重要</b>
+                  <strong>請假 / 換班申請提醒</strong>
+                  <p>下週開始之請假 / 換班申請，請於本週五 <em>（5/24）18:00</em> 前完成。</p>
+                  <time>05 / 19</time>
+                </article>
+              </div>
+            </section>
+
+            <section class="staff-panel reminder-panel">
+              <div class="staff-panel-title compact">
+                <span><img src="images/公告.png" alt=""></span>
+                <h2>內部提醒</h2>
+              </div>
+
+              <div class="reminder-grid">
+                <article>
+                  <img src="images/隨時保持整潔.png" alt="">
+                  <p>請隨時保持工作環境整潔，給顧客良好體驗。</p>
+                </article>
+                <article>
+                  <img src="images/下班確認門窗.png" alt="">
+                  <p>下班前請確認門窗、設備電源已關閉。</p>
+                </article>
+                <article>
+                  <img src="images/提醒.png" alt="">
+                  <p>遇突發狀況請立即聯繫值班主管。</p>
+                </article>
+                <article>
+                  <img src="images/本月壽星.png" alt="">
+                  <p>本月壽星：林小美、張庭、李安，生日快樂！</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="staff-panel event-panel">
+              <div class="staff-panel-title compact">
+                <span><img src="images/完整班表.png" alt=""></span>
+                <h2>活動班表</h2>
+                <button type="button">查看全部活動 ›</button>
+              </div>
+
+              <table class="event-table">
+                <thead>
+                  <tr>
+                    <th>日期</th>
+                    <th>活動名稱</th>
+                    <th>時間</th>
+                    <th>地點</th>
+                    <th>支援人員</th>
+                    <th>需求人數</th>
+                    <th>狀態</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>5 / 25（六）</td>
+                    <td>員工電影日</td>
+                    <td>18:30 - 21:00</td>
+                    <td>1F 多功能廳</td>
+                    <td>王小明、林小美、陳大宇</td>
+                    <td>3 人</td>
+                    <td><span>已排定</span></td>
+                  </tr>
+                  <tr>
+                    <td>5 / 28（二）</td>
+                    <td>VIP 客戶體驗日</td>
+                    <td>13:00 - 20:00</td>
+                    <td>2F 會議室</td>
+                    <td>李安、張庭</td>
+                    <td>2 人</td>
+                    <td><span>已排定</span></td>
+                  </tr>
+                  <tr>
+                    <td>6 / 01（六）</td>
+                    <td>周年慶活動</td>
+                    <td>09:00 - 21:00</td>
+                    <td>全館</td>
+                    <td>王小明、許庭瑄、陳大宇</td>
+                    <td>3 人</td>
+                    <td><span>已排定</span></td>
+                  </tr>
+                  <tr>
+                    <td>6 / 08（日）</td>
+                    <td>親子 DIY 活動</td>
+                    <td>14:00 - 17:00</td>
+                    <td>B1 教室</td>
+                    <td>林小美、張庭</td>
+                    <td>2 人</td>
+                    <td><span>已排定</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="staff-panel quick-panel">
+              <div class="staff-panel-title compact">
+                <span><img src="images/提醒.png" alt=""></span>
+                <h2>快捷功能</h2>
+              </div>
+
+              <div class="quick-grid">
+                <button type="button">
+                  <img src="images/完整班表.png" alt="">
+                  <strong>完整班表</strong>
+                  <small>（本月）</small>
+                </button>
+                <button type="button">
+                  <img src="images/換班申請.png" alt="">
+                  <strong>換班申請</strong>
+                </button>
+                <button type="button">
+                  <img src="images/請假申請.png" alt="">
+                  <strong>請假申請</strong>
+                </button>
+                <button type="button">
+                  <img src="images/我的申請紀錄表.png" alt="">
+                  <strong>我的申請紀錄</strong>
+                </button>
+              </div>
+            </section>
+          </div>
+
+          <footer class="staff-board-footer">ⓘ 如有疑問請洽各單位主管，感謝您的配合！</footer>
+        </div>
+      </section>
+
+      <section id="bulkView" class="employee-panel-view bulk-view repair-view" aria-hidden="true">
+        <div class="repair-page">
+          <div class="repair-hero">
+            <div class="repair-title">
+              <h1><span>設備</span> / 問題回報</h1>
+              <p>回報設備異常、影廳狀況或顧客事件，我們將盡快處理。</p>
+            </div>
+            <img src="images/設備申報.png" alt="" class="repair-mascot" aria-hidden="true">
+          </div>
+
+          <div class="repair-layout">
+            <form class="repair-main" id="bulkForm">
+              <section class="repair-section repair-category-section">
+                <h2>選擇回報類別</h2>
+                <div class="repair-category-grid">
+                  <button type="button" class="repair-category-card active" data-bulk-kind="影廳設備異常">
+                    <span class="repair-card-check">✓</span>
+                    <img src="images/音響設備.png" alt="">
+                    <strong>影廳設備異常</strong>
+                    <small>投影機、音響、銀幕、燈光等設備問題</small>
+                  </button>
+                  <button type="button" class="repair-category-card" data-bulk-kind="售票設備問題">
+                    <img src="images/售票設備問題.png" alt="">
+                    <strong>售票設備問題</strong>
+                    <small>售票機、取票機、掃描機等設備問題</small>
+                  </button>
+                  <button type="button" class="repair-category-card" data-bulk-kind="餐飲設備問題">
+                    <img src="images/雙人套餐標示.png" alt="">
+                    <strong>餐飲設備問題</strong>
+                    <small>爆米花機、飲料機、冰箱等餐飲設備問題</small>
+                  </button>
+                  <button type="button" class="repair-category-card" data-bulk-kind="顧客事件回報">
+                    <img src="images/顧客投訴.png" alt="">
+                    <strong>顧客事件回報</strong>
+                    <small>顧客投訴、糾紛、遺失物品等事件</small>
+                  </button>
+                  <button type="button" class="repair-category-card" data-bulk-kind="清潔環境問題">
+                    <img src="images/清潔問題.png" alt="">
+                    <strong>清潔環境問題</strong>
+                    <small>影廳清潔、洗手間、公共區域等問題</small>
+                  </button>
+                </div>
+              </section>
+
+              <section class="repair-section repair-flow">
+                <h2>快速回報流程</h2>
+                <div class="repair-flow-grid">
+                  <article>
+                    <img src="images/選擇類別.png" alt="">
+                    <b>1</b>
+                    <strong>選擇類別</strong>
+                    <span>選擇問題回報類別</span>
+                  </article>
+                  <article>
+                    <img src="images/填寫內容.png" alt="">
+                    <b>2</b>
+                    <strong>填寫內容</strong>
+                    <span>描述問題並上傳照片</span>
+                  </article>
+                  <article>
+                    <img src="images/送出回報.png" alt="">
+                    <b>3</b>
+                    <strong>送出回報</strong>
+                    <span>系統將通知相關人員</span>
+                  </article>
+                  <article>
+                    <img src="images/進度追蹤.png" alt="">
+                    <b>4</b>
+                    <strong>追蹤進度</strong>
+                    <span>在「我的回報」查看處理狀態</span>
+                  </article>
+                </div>
+              </section>
+
+              <section class="repair-note-strip">
+                <div>
+                  <img src="images/注意事項.png" alt="">
+                  <strong>注意事項</strong>
+                  <ul>
+                    <li>請提供清楚的問題描述與照片，協助我們快速處理。</li>
+                    <li>緊急狀況請立即通知值班主管或撥打內線電話。</li>
+                    <li>影響營運的重大問題，系統將自動標記為緊急處理。</li>
+                  </ul>
+                </div>
+                <div>
+                  <img src="images/聯絡.png" alt="">
+                  <strong>緊急聯絡</strong>
+                  <p>值班主管：分機 123<br>維修專線：分機 456</p>
+                </div>
+              </section>
+
+              <section class="repair-section repair-form-area">
+                <div class="repair-input-grid">
+                  <label>發生位置
+                    <input id="repairLocation" type="text" value="影廳 3 號" placeholder="例如：影廳 3 號、售票櫃台、餐飲區">
+                  </label>
+                  <label>問題描述
+                    <textarea id="repairDescription" rows="3" placeholder="請簡述設備或現場狀況，必要時補充照片。"></textarea>
+                  </label>
+                </div>
+                <p class="form-status" id="bulkStatus" aria-live="polite"></p>
+              </section>
+            </form>
+
+            <aside class="repair-side">
+              <section class="repair-side-card quick-report-card">
+                <h2>快速回報</h2>
+                <p>常用類別一鍵回報，節省時間！</p>
+                <div class="quick-report-grid">
+                  <button type="button" data-bulk-kind="影廳設備異常"><img src="images/音響設備.png" alt="">影廳設備</button>
+                  <button type="button" data-bulk-kind="售票設備問題"><img src="images/售票設備問題.png" alt="">售票設備</button>
+                  <button type="button" data-bulk-kind="餐飲設備問題"><img src="images/雙人套餐標示.png" alt="">餐飲設備</button>
+                  <button type="button" data-bulk-kind="清潔環境問題"><img src="images/清潔問題.png" alt="">清潔環境</button>
+                </div>
+                <button class="repair-submit" type="submit" form="bulkForm">立即回報 <span>›</span></button>
+              </section>
+
+              <section class="repair-side-card repair-history-card">
+                <header>
+                  <div>
+                    <h2>我的回報紀錄</h2>
+                    <p>查看所有回報與處理狀態</p>
+                  </div>
+                  <button type="button">查看全部 ›</button>
+                </header>
+                <article>
+                  <img src="images/音響設備.png" alt="">
+                  <div><strong>影廳3號 - 投影機無法開機</strong><span>回報時間：2025/05/28 10:30</span></div>
+                  <b class="processing">處理中</b>
+                </article>
+                <article>
+                  <img src="images/雙人套餐標示.png" alt="">
+                  <div><strong>餐飲區 - 爆米花機卡住</strong><span>回報時間：2025/05/28 09:15</span></div>
+                  <b class="processing">處理中</b>
+                </article>
+                <article>
+                  <img src="images/顧客投訴.png" alt="">
+                  <div><strong>洗手間 - 紙巾機故障</strong><span>回報時間：2025/05/27 18:45</span></div>
+                  <b class="done">已完成</b>
+                </article>
+                <button class="more-history" type="button">更多回報紀錄⌄</button>
+              </section>
+            </aside>
+          </div>
+
+          <footer class="repair-info-bar">
+            <div><img src="images/時間.png" alt=""><span>服務時間</span><b>週一～週五 09:00 - 18:00</b></div>
+            <div><img src="images/聯絡.png" alt=""><span>聯絡電話</span><b>(02) 1234-5678</b></div>
+            <div><img src="images/信箱.png" alt=""><span>聯絡信箱</span><b>service@cinema.com</b></div>
+            <div><img src="images/使用說明.png" alt=""><span>使用說明</span><b>回報流程與注意事項</b></div>
+          </footer>
+        </div>
+      </section>
+
+      <section id="movieView" class="employee-panel-view movie-view movie-benefit-page" aria-hidden="true">
+
+        <div class="movie-benefit-header">
+          <div class="movie-benefit-brand">
+            <div class="movie-benefit-logo">
+              <span class="mi-mark">MI</span>
+
+            </div>
+
+            <div class="movie-benefit-line"></div>
+
+            <div class="movie-benefit-title">
+              <strong id="moviePageTitle">員工電影優惠</strong>
+              <small id="moviePageSubtitle">STAFF MOVIE BENEFIT</small>
+            </div>
+          </div>
+
+          <div class="movie-benefit-clock">
+            <strong data-welfare-time>--:--</strong>
+            <span>2025/05/28（三）</span>
+          </div>
+        </div>
+
+        <button class="movie-benefit-back" type="button">
+          <span>&lt;</span> 返回上一步
+        </button>
+
+        <div class="movie-progress" id="movieProgress">
+          <span data-step="list">電影介紹</span>
+          <span data-step="verify">輸入工號</span>
+          <span data-step="schedule">選擇張數</span>
+          <span data-step="seats">選擇座位</span>
+          <span data-step="snacks">加購餐點</span>
+          <span data-step="payment">取票完成</span>
+        </div>
+
+        <section class="movie-step active" data-movie-step="list">
+          <div class="movie-step-heading">
+            <h2>正在上映電影</h2>
+            <p>享受員工專屬優惠票價 <strong>$180</strong></p>
+          </div>
+
+          <div class="movie-poster-grid" id="moviePosterGrid"></div>
+        </section>
+
+        <section class="movie-step" data-movie-step="detail">
+          <div class="movie-detail-layout">
+            <div class="movie-detail-poster">
+              <img id="movieDetailPoster" src="" alt="">
+            </div>
+
+            <div class="movie-detail-content">
+              <span class="eyebrow" id="movieDetailEn">MOVIE</span>
+              <h2 id="movieDetailTitle">電影名稱</h2>
+              <p class="movie-release" id="movieDetailDate">上映日期</p>
+
+              <div class="movie-tags" id="movieDetailTags"></div>
+
+              <p class="movie-synopsis" id="movieDetailSynopsis"></p>
+
+              <div class="movie-cast-list" id="movieCastList"></div>
+
+              <button class="primary-action" id="startMovieBookingButton" type="button">
+                開始訂票 ›
+              </button>
+            </div>
+          </div>
+
+          <div class="movie-snack-preview" id="movieDetailSnacks"></div>
+        </section>
+
+        <section class="movie-step" data-movie-step="schedule">
+          <div class="movie-booking-layout">
+            <div>
+              <div class="movie-date-grid" id="movieDateGrid"></div>
+              <div class="movie-format-tabs" id="movieFormatTabs"></div>
+              <div class="employee-movie-sessions" id="employeeMovieSessions"></div>
+            </div>
+
+            <aside class="movie-order-preview">
+              <div id="movieSchedulePreview"></div>
+              <button class="primary-action" id="confirmScheduleButton" type="button">
+                下一步：選擇座位 ›
+              </button>
+            </aside>
+          </div>
+        </section>
+
+        <section class="movie-step" data-movie-step="verify">
+          <div class="movie-verify-layout">
+
+            <article class="movie-verify-card">
+              <span class="verify-icon employee-icon"></span>
+
+              <h2>請輸入工號</h2>
+              <p>驗證員工資格以享有優惠票價</p>
+
+              <div class="movie-id-input-wrap">
+                <input id="employeeMovieId" type="text" inputmode="numeric" placeholder="請輸入您的工號" readonly>
+                <button type="button" class="movie-id-clear" id="movieIdClearButton">×</button>
+              </div>
+
+              <div class="number-pad movie-keypad" id="movieEmployeeKeypad"></div>
+
+              <p class="verify-error" id="movieVerifyError" aria-live="polite"></p>
+            </article>
+
+            <article class="movie-people-card">
+              <span class="verify-icon people-icon"></span>
+
+              <h2>選擇人數</h2>
+              <p>每日每位員工限購 2 張</p>
+
+              <div class="movie-people-stepper">
+                <button type="button" id="moviePeopleMinus">−</button>
+                <strong id="moviePeopleCount">1</strong>
+                <button type="button" id="moviePeoplePlus">＋</button>
+              </div>
+
+              <small class="movie-people-limit">最多可選 2 張</small>
+
+              <div class="movie-ticket-note">
+                <span class="ticket-note-icon"></span>
+                <div>
+                  <p>員工優惠票價</p>
+                  <strong>$180 <small>/ 張</small></strong>
+                </div>
+              </div>
+
+              <button class="primary-action" id="confirmPeopleButton" type="button">
+                下一步：選擇場次 <span>→</span>
+              </button>
+            </article>
+
+          </div>
+
+          <div class="movie-verify-bottom">
+            <button class="movie-bottom-back" type="button" onclick="document.querySelector('.movie-benefit-back').click()">
+              ← 返回上一頁
+            </button>
+            <span>ⓘ 每日每位員工限購 2 張</span>
+          </div>
+        </section>
+
+        <section class="movie-step" data-movie-step="seats">
+          <div class="seat-layout">
+            <div class="seat-main">
+              <div class="screen-label">SCREEN</div>
+              <div class="employee-seat-grid" id="employeeSeatGrid"></div>
+
+              <div class="seat-legend">
+                <span><i class="seat available"></i>可選</span>
+                <span><i class="seat selected"></i>已選</span>
+                <span><i class="seat sold"></i>已售</span>
+              </div>
+            </div>
+
+            <aside class="movie-order-preview" id="seatPreview"></aside>
+          </div>
+
+          <div class="seat-bottom-bar">
+            <span>需選 <strong id="employeeSeatLimit">1</strong> 個座位，目前已選 <strong id="employeeSeatCount">0</strong> 個</span>
+            <button class="primary-action" id="confirmSeatsButton" type="button">
+              下一步：加購餐點 ›
+            </button>
+          </div>
+        </section>
+
+        <section class="movie-step" data-movie-step="snacks">
+          <div class="snack-layout">
+            <div class="employee-snack-grid" id="employeeSnackGrid"></div>
+
+            <aside class="movie-order-preview">
+              <h2>餐點摘要</h2>
+              <div class="summary-list" id="employeeSnackSummary">尚未選擇餐食</div>
+
+              <button class="secondary-action" id="skipSnacksButton" type="button">
+                略過餐點
+              </button>
+
+              <button class="primary-action" id="confirmSnacksButton" type="button">
+                下一步：確認付款 ›
+              </button>
+            </aside>
+          </div>
+        </section>
+
+        <section class="movie-step" data-movie-step="payment">
+          <div class="checkout-progress" aria-hidden="true">
+            <span class="done">選擇電影</span>
+            <span class="done">輸入工號</span>
+            <span class="done">選擇人數</span>
+            <span class="done">選擇日期、場次</span>
+            <span class="done">選擇座位</span>
+            <span class="active">加購餐點</span>
+            <span>取票完成</span>
+          </div>
+
+          <div class="movie-checkout-shell">
+            <div class="movie-checkout-main">
+              <div class="movie-checkout-heading">
+                <span class="checkout-wallet-icon">
+                  <img src="images/錢包.png" alt="">
+                </span>
+                <h2>結帳付款</h2>
+                <p>請在 <strong>09:45</strong> 內完成付款，逾時系統將自動釋放座位</p>
+              </div>
+
+              <h3 class="checkout-section-title">付款方式選擇</h3>
+
+              <div class="payment-methods movie-payment-options" data-movie-payment>
+                <button class="payment-choice selected" type="button" data-pay="信用卡付款">
+                  <span class="choice-check"></span>
+                  <span class="choice-copy">
+                    <strong>信用卡付款</strong>
+                    <small>VISA、MasterCard、JCB 等</small>
+                    <em>推薦使用</em>
+                  </span>
+                  <img src="images/信用卡.png" alt="">
+                </button>
+
+                <button class="payment-choice" type="button" data-pay="LINE Pay">
+                  <span class="choice-check"></span>
+                  <span class="choice-copy">
+                    <strong>LINE Pay</strong>
+                    <small>安全快速結帳</small>
+                  </span>
+                  <img src="images/linepay-logo-tw.png" alt="">
+                </button>
+
+                <button class="payment-choice" type="button" data-pay="街口支付">
+                  <span class="choice-check"></span>
+                  <span class="choice-copy">
+                    <strong>街口支付</strong>
+                    <small>支援街口帳戶／銀行卡</small>
+                  </span>
+                  <img src="images/街口.png" alt="">
+                </button>
+
+                <button class="payment-choice" type="button" data-pay="Apple Pay">
+                  <span class="choice-check"></span>
+                  <span class="choice-copy">
+                    <strong>Apple Pay</strong>
+                    <small>使用 Apple Pay 付款</small>
+                  </span>
+                  <img src="images/applepay.png" alt="">
+                </button>
+
+                <button class="payment-choice" type="button" data-pay="悠遊付 EasyWallet">
+                  <span class="choice-check"></span>
+                  <span class="choice-copy">
+                    <strong>悠遊付 EasyWallet</strong>
+                    <small>使用悠遊付付款</small>
+                  </span>
+                  <img src="images/悠遊付.png" alt="">
+                </button>
+
+                <button class="payment-choice" type="button" data-pay="全支付 pxpay plus">
+                  <span class="choice-check"></span>
+                  <span class="choice-copy">
+                    <strong>全支付 pxpay plus</strong>
+                    <small>支援全支付帳戶／信用卡</small>
+                  </span>
+                  <img src="images/全支付.webp" alt="">
+                </button>
+              </div>
+
+              <h3 class="checkout-section-title invoice-title">發票資訊</h3>
+
+              <div class="movie-invoice-options" data-movie-invoice>
+                <button class="movie-invoice-choice selected" type="button" data-invoice="捐贈發票">
+                  <span class="choice-check"></span>
+                  <img src="images/捐贈發票.png" alt="">
+                  <span>
+                    <strong>捐贈發票</strong>
+                    <small>將發票捐贈給慈善機構</small>
+                  </span>
+                </button>
+
+                <button class="movie-invoice-choice" type="button" data-invoice="個人電子發票">
+                  <span class="choice-check"></span>
+                  <img src="images/發票.png" alt="">
+                  <span>
+                    <strong>個人電子發票</strong>
+                    <small>發票將存入手機條碼載具</small>
+                  </span>
+                </button>
+              </div>
+
+              <p class="checkout-security-note">本平台採用 SSL 加密技術，請安心交易</p>
+              <p class="verify-error" id="moviePaymentError" aria-live="polite"></p>
+            </div>
+
+            <aside class="movie-checkout-summary">
+              <h2>訂單明細</h2>
+              <div class="summary-list" id="moviePaymentSummary"></div>
+
+              <button class="cart-checkout" id="employeeMovieBuy" type="button">
+                <span>確認付款</span>
+                <b>→</b>
+              </button>
+
+              <p>點擊確認付款即表示同意 <strong>會員條款</strong> 與 <strong>隱私權政策</strong></p>
+            </aside>
+          </div>
+        </section>
+
+      </section>
+      <section id="foodView" class="employee-panel-view food-view" aria-hidden="true">
+        <div class="section-title-row">
+          <button class="section-back" id="foodBackButton" type="button">‹ 返回員工專區</button>
+          <div>
+            <span class="eyebrow">MEAL BOOKING</span>
+            <h1 id="foodTitle">預訂便當</h1>
+            <p id="foodSubtitle">先選擇餐點類別，再進入店家品項與價格清單。</p>
+          </div>
+        </div>
+
+        <div class="food-workspace">
+          <article class="food-main-panel">
+            <div class="food-progress">
+              <span class="active">1 選店家</span>
+              <span>2 選品項</span>
+              <span>3 確認付款</span>
+              <span>4 完成</span>
+            </div>
+            <div class="category-grid" id="categoryGrid"></div>
+            <div class="menu-list" id="menuList"></div>
+          </article>
+          <aside class="cart-panel">
+            <div class="cart-head">
+              <h2>我的訂單</h2>
+              <span id="cartCount">0 項</span>
+            </div>
+            <div class="cart-list" id="cartList">尚未選擇商品</div>
+            <div class="cart-total">
+              <span>合計</span>
+              <strong id="cartTotal">$0</strong>
+            </div>
+            <button class="primary-action" id="sendOrderButton" type="button" disabled>送出訂單 ›</button>
+          </aside>
+        </div>
+      </section>
+
+      <section id="payView" class="employee-panel-view payment-view" aria-hidden="true">
+        <div class="payment-layout">
+          <article class="payment-summary-card">
+            <span class="eyebrow">CHECKOUT</span>
+            <h1>確認訂單</h1>
+            <div id="paySummary" class="summary-list"></div>
+          </article>
+          <aside class="payment-panel">
+            <h2>付款方式</h2>
+            <div class="payment-methods" data-food-payment>
+              <button type="button" class="payment-choice selected" data-pay="信用卡">信用卡</button>
+              <button type="button" class="payment-choice" data-pay="電子支付">電子支付</button>
+            </div>
+            <button class="primary-action" id="confirmPayButton" type="button">付款完成 ›</button>
+          </aside>
+        </div>
+      </section>
+
+      <section id="doneView" class="employee-panel-view done-view" aria-hidden="true">
+        <div class="success-card">
+          <div class="success-mark">✓</div>
+          <span class="eyebrow">ORDER COMPLETE</span>
+          <h1>訂單完成</h1>
+          <p id="doneText">餐點訂單已送出。</p>
+          <button class="primary-action" type="button" data-back="hub">返回員工專區</button>
+        </div>
+      </section>
+
+      <section id="movieDoneView" class="employee-panel-view done-view" aria-hidden="true">
+        <div class="success-card movie-qr-card">
+          <div class="generated-qr" aria-hidden="true"></div>
+          <span class="eyebrow">TICKET QR CODE</span>
+          <h1>取票 QR Code</h1>
+          <p id="movieDoneSummary">員工電影優惠已完成。</p>
+          <small id="movieQrText">請至櫃台或自助機掃描 QR Code 取票。</small>
+          <button class="primary-action" type="button" data-back="hub">返回員工專區</button>
+        </div>
+      </section>
+    </main>
+  </div></div></div>
+
+  <script src="js/employee.js?v=99999999"></script>
+  <script src="js/idle-home.js?v=20260624-1"></script>
+</body>
+</html>

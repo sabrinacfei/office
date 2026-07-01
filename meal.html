@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AMBASSADOR 國賓影城｜預約便當</title>
+  <link rel="stylesheet" href="css/visitor.css?v=20260624-1">
+  <link rel="stylesheet" href="css/meal.css?v=202606309999999">
+  <link rel="stylesheet" href="css/kiosk-animations.css?v=20260624-1">
+</head>
+<body>
+  <div class="kiosk-stage"><div class="kiosk-screen"><div class="visitor-canvas meal-canvas">
+    <header class="visitor-header meal-header">
+      <button class="back-button" id="backButton" type="button"><span>‹</span> 返回首頁</button>
+      <div class="page-title">
+        <svg viewBox="0 0 48 48"><path d="M12 7v16M18 7v16M12 16h6M15 23v18M31 7c-5 5-5 15 0 19v15M31 7c6 5 6 15 0 19"/></svg>
+        <div><strong>預約便當</strong><small>MEAL BOOKING</small></div>
+      </div>
+      <div class="header-time"><span></span><strong id="headerTime">--:--</strong></div>
+    </header>
+
+    <main class="meal-main">
+      <nav class="meal-progress" aria-label="預約便當流程">
+        <span class="active" data-progress="store">1 選擇店家</span>
+        <span data-progress="items">2 選擇餐點</span>
+        <span data-progress="payment">3 確認付款</span>
+        <span data-progress="done">4 訂單完成</span>
+      </nav>
+
+      <section class="meal-step active" data-step="store">
+        <div class="meal-heading">
+          <div>
+            <span class="eyebrow">TODAY MENU</span>
+            <h1>請選擇今日便當店家</h1>
+            <p>選好店家後，再挑選品項與數量。</p>
+          </div>
+          <strong>今日截止 11:00</strong>
+        </div>
+        <div class="store-grid" id="storeGrid"></div>
+      </section>
+
+      <section class="meal-step" data-step="items">
+        <div class="meal-layout">
+          <article class="menu-panel">
+            <button class="section-back" id="storeBackButton" type="button">‹ 返回店家</button>
+            <span class="eyebrow" id="selectedCategory">便當</span>
+            <h1 id="vendorTitle">老張便當</h1>
+            <p id="vendorDescription">台式家常便當，今日菜單。</p>
+            <div class="item-list" id="itemList"></div>
+          </article>
+          <aside class="order-panel">
+            <div class="order-head">
+              <h2>我的訂單</h2>
+              <span id="orderCount">0 項</span>
+            </div>
+            <div class="order-list" id="orderList">尚未選擇餐點</div>
+            <label class="order-note">備註
+              <textarea id="orderNote" placeholder="例如：飯少、不要辣、餐具需求"></textarea>
+            </label>
+            <div class="order-total"><span>小計</span><strong id="orderTotal">$0</strong></div>
+            <button class="meal-primary" id="confirmOrderButton" type="button" disabled>確認送出訂單 ›</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="meal-step" data-step="payment">
+        <div class="payment-layout">
+          <article class="confirm-panel">
+            <button class="section-back" id="paymentBackButton" type="button">‹ 返回餐點</button>
+            <span class="eyebrow">ORDER REVIEW</span>
+            <h1>訂單確認</h1>
+            <dl class="confirm-list" id="confirmList"></dl>
+          </article>
+          <aside class="pay-panel">
+            <span class="linepay-mark">PAYMENT</span>
+            <h2>選擇付款方式</h2>
+            <strong id="payTotal">$0</strong>
+            <div class="payment-methods">
+              <button class="payment-method selected" type="button" data-payment="電子支付">
+                <span>1</span>
+                <div>
+                  <strong>電子支付</strong>
+                  <small>LINE Pay / 街口支付</small>
+                  <i class="payment-logos">
+                    <img src="images/linepay-logo-tw.png" alt="LINE Pay">
+                    <img src="images/unnamed.png" alt="街口支付">
+                  </i>
+                </div>
+              </button>
+              <button class="payment-method" type="button" data-payment="信用卡／轉帳">
+                <span>2</span>
+                <div>
+                  <strong>信用卡／轉帳</strong>
+                  <small>刷卡或匯款後完成付款</small>
+                </div>
+              </button>
+            </div>
+            <button class="meal-primary" id="finishPaymentButton" type="button">確認付款方式</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="meal-step done-step" data-step="done">
+        <div class="done-card">
+          <div class="done-check">✓</div>
+          <span class="eyebrow">ORDER COMPLETE</span>
+          <h1>訂單完成</h1>
+          <dl id="doneSummary"></dl>
+          <div class="done-actions">
+            <button id="newOrderButton" type="button">繼續預訂</button>
+            <button id="doneHomeButton" type="button">返回主畫面</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div></div></div>
+  <script src="js/meal.js?v=2026062599"></script>
+</body>
+</html>

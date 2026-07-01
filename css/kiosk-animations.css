@@ -1,0 +1,102 @@
+.ticket-layer.open .ticket-panel,
+.review-layer.open .review-card,
+.success-layer.open .success-card,
+.pay-view.active .order-card,
+.pay-view.active .linepay-card,
+.done-view.active .done-card {
+  animation: modalRise .42s cubic-bezier(.2,.9,.2,1) both;
+}
+
+.success-layer.open .success-check,
+.ticket-step.success.active .ticket-success-icon,
+.done-view.active .done-ring,
+.done-state.active .done-lock {
+  animation: successRing .72s cubic-bezier(.2,.9,.2,1) both;
+}
+
+.success-layer.open .success-check svg path {
+  stroke-dasharray: 64;
+  stroke-dashoffset: 64;
+  animation: drawCheck .62s ease .18s forwards;
+}
+
+.done-view.active .done-ring span,
+.ticket-step.success.active .ticket-success-icon {
+  animation: checkBounce .52s cubic-bezier(.18,1.35,.32,1) .16s both;
+}
+
+.payment-box,
+.qr-code,
+.fake-qr {
+  position: relative;
+  overflow: hidden;
+}
+
+.payment-box::after,
+.qr-code::after,
+.fake-qr::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: -20%;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(83,198,142,.62);
+  box-shadow: 0 0 20px rgba(83,198,142,.72);
+  animation: scanLine 1.9s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.ticket-primary,
+.cart-checkout:not(:disabled),
+.submit-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-primary::after,
+.cart-checkout:not(:disabled)::after,
+.submit-button::after {
+  content: "";
+  position: absolute;
+  inset: -60% auto -60% -30%;
+  width: 86px;
+  transform: rotate(18deg);
+  background: linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent);
+  animation: buttonSweep 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes modalRise {
+  from { opacity: 0; transform: translateY(24px) scale(.965); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes successRing {
+  0% { opacity: 0; transform: scale(.72); box-shadow: 0 0 0 rgba(83,198,142,0); }
+  55% { opacity: 1; transform: scale(1.08); box-shadow: 0 0 0 20px rgba(83,198,142,.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes drawCheck {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes checkBounce {
+  0% { opacity: 0; transform: scale(.65) rotate(-8deg); }
+  70% { opacity: 1; transform: scale(1.12) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes scanLine {
+  0%, 100% { top: 8%; opacity: 0; }
+  15%, 85% { opacity: 1; }
+  50% { top: 88%; }
+}
+
+@keyframes buttonSweep {
+  0%, 55% { transform: translateX(0) rotate(18deg); opacity: 0; }
+  65% { opacity: .9; }
+  100% { transform: translateX(760px) rotate(18deg); opacity: 0; }
+}

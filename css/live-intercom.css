@@ -1,0 +1,288 @@
+:root {
+  --call-gold: #efbd78;
+  --call-deep: #07111d;
+  --call-glass: rgba(18, 39, 61, .72);
+  --call-line: rgba(226, 240, 255, .22);
+}
+
+.live-intercom-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(3, 9, 17, .62);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .22s ease, visibility .22s ease;
+  -webkit-backdrop-filter: blur(9px) saturate(1.08);
+  backdrop-filter: blur(9px) saturate(1.08);
+}
+
+.canvas > .live-intercom-layer,
+.visitor-canvas > .live-intercom-layer {
+  border-radius: 0;
+}
+
+.live-intercom-layer.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.live-call-card {
+  width: min(520px, calc(100% - 56px));
+  min-height: 330px;
+  position: relative;
+  padding: 72px 42px 36px;
+  border: 1px solid var(--call-line);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 50% -12%, rgba(239, 189, 120, .18), transparent 34%),
+    linear-gradient(145deg, rgba(23, 47, 70, .78), rgba(6, 18, 32, .90));
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, .48),
+    inset 0 1px 0 rgba(255, 255, 255, .09);
+  text-align: center;
+  transform: translateY(20px) scale(.95);
+  transition: transform .28s cubic-bezier(.2, .8, .2, 1);
+  -webkit-backdrop-filter: blur(24px) saturate(1.18);
+  backdrop-filter: blur(24px) saturate(1.18);
+}
+
+.canvas > .live-intercom-layer .live-call-card,
+.visitor-canvas > .live-intercom-layer .live-call-card {
+  width: min(720px, calc(100% - 120px));
+  min-height: 430px;
+  padding: 90px 58px 48px;
+}
+
+.canvas > .live-intercom-layer .live-call-title,
+.visitor-canvas > .live-intercom-layer .live-call-title {
+  font-size: 52px;
+}
+
+.canvas > .live-intercom-layer .live-call-subtitle,
+.visitor-canvas > .live-intercom-layer .live-call-subtitle {
+  font-size: 22px;
+}
+
+.canvas > .live-intercom-layer .live-call-status,
+.visitor-canvas > .live-intercom-layer .live-call-status {
+  min-height: 52px;
+  padding: 0 26px;
+  font-size: 18px;
+}
+
+.live-intercom-layer.open .live-call-card {
+  transform: translateY(0) scale(1);
+}
+
+.live-call-card::before {
+  content: "";
+  position: absolute;
+  left: 42px;
+  right: 42px;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 220, 166, .95), transparent);
+  box-shadow: 0 0 20px rgba(239, 189, 120, .55);
+}
+
+.live-call-orb {
+  position: absolute;
+  left: 50%;
+  top: -62px;
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(circle at center, #050607 0 58%, #080a0d 74%, #010203 100%);
+  border: 1px solid rgba(239, 189, 120, .72);
+  box-shadow:
+    0 0 0 1px rgba(239, 189, 120, .18),
+    0 0 42px rgba(239, 189, 120, .42),
+    0 0 96px rgba(239, 189, 120, .18);
+  overflow: hidden;
+}
+
+.live-call-orb::after {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border-radius: 50%;
+  border: 1px solid rgba(239, 189, 120, .18);
+}
+
+.live-call-orb svg {
+  width: 58px;
+  height: 58px;
+  fill: none;
+  stroke: var(--call-gold);
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter:
+    drop-shadow(0 0 8px rgba(255, 226, 170, .96))
+    drop-shadow(0 0 20px rgba(239, 189, 120, .72));
+  animation: liveCallRing 1.25s ease-in-out infinite;
+}
+
+.live-call-card[data-state="connected"] .live-call-orb svg {
+  animation: liveCallGlow 2s ease-in-out infinite;
+}
+
+.live-call-kicker {
+  display: block;
+  margin-top: 6px;
+  color: var(--call-gold);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .24em;
+}
+
+.live-call-title {
+  margin: 14px 0 7px;
+  color: #fff;
+  font-size: 40px;
+  line-height: 1.12;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+
+.live-call-subtitle {
+  min-height: 28px;
+  margin: 0;
+  color: rgba(238, 244, 250, .84);
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: .04em;
+}
+
+.live-call-status {
+  margin: 21px auto 0;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border: 1px solid rgba(226, 240, 255, .14);
+  border-radius: 999px;
+  color: rgba(239, 246, 252, .72);
+  background: rgba(5, 14, 25, .42);
+  font-size: 14px;
+}
+
+.live-call-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.live-call-actions button {
+  height: 58px;
+  border-radius: 16px;
+  border: 1px solid rgba(226, 240, 255, .16);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease;
+}
+
+.live-call-actions button:active {
+  transform: scale(.97);
+}
+
+.live-call-decline,
+.live-call-hangup {
+  background: rgba(8, 18, 31, .46);
+  color: #fff;
+  border-color: rgba(255, 118, 118, .48) !important;
+}
+
+.live-call-answer {
+  background: linear-gradient(135deg, #44d37e, #20ad5c);
+  color: #06131d;
+  box-shadow: 0 12px 30px rgba(32, 173, 92, .22);
+}
+
+.live-call-hangup {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #f05f5f, #c73d45);
+  border: 0 !important;
+  color: #fff;
+}
+
+.live-call-actions[data-mode="incoming"] .live-call-hangup,
+.live-call-actions[data-mode="active"] .live-call-answer,
+.live-call-actions[data-mode="active"] .live-call-decline,
+.live-call-actions[data-mode="outgoing"] .live-call-answer,
+.live-call-actions[data-mode="outgoing"] .live-call-decline {
+  display: none;
+}
+
+.live-call-actions[data-mode="incoming"] .live-call-answer,
+.live-call-actions[data-mode="incoming"] .live-call-decline {
+  display: block;
+}
+
+.live-call-actions[data-mode="outgoing"],
+.live-call-actions[data-mode="active"] {
+  grid-template-columns: 1fr;
+}
+
+.live-call-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  z-index: 10001;
+  min-width: 280px;
+  padding: 14px 18px;
+  border: 1px solid rgba(239, 189, 120, .34);
+  border-radius: 16px;
+  color: #fff;
+  background: rgba(9, 20, 34, .86);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .32);
+  text-align: center;
+  transform: translate(-50%, 16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.canvas > .live-call-toast,
+.visitor-canvas > .live-call-toast {
+  bottom: 52px;
+  min-width: 430px;
+  max-width: calc(100% - 120px);
+  padding: 20px 26px;
+  border-radius: 22px;
+  font-size: 20px;
+  font-weight: 850;
+}
+
+.live-call-toast.show {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+@keyframes liveCallRing {
+  0%, 100% { transform: rotate(-5deg) scale(1); }
+  35% { transform: rotate(6deg) scale(1.07); }
+  70% { transform: rotate(-3deg) scale(1.02); }
+}
+
+@keyframes liveCallGlow {
+  0%, 100% { opacity: .92; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}

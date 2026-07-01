@@ -1,0 +1,273 @@
+.intercom-canvas {
+  background: radial-gradient(
+      circle at 76% 42%,
+      rgba(57, 110, 164, 0.22),
+      transparent 34%
+    ),
+    linear-gradient(180deg, #0b1729, #081321);
+}
+.intercom-main {
+  height: 986px;
+  display: grid;
+  grid-template-columns: 1fr 620px;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+}
+.contact-panel {
+  padding: 68px 56px;
+}
+.dial-panel {
+  padding: 68px 64px;
+  background: linear-gradient(
+    145deg,
+    rgba(28, 46, 67, 0.8),
+    rgba(15, 29, 47, 0.94)
+  );
+  border-left: 1px solid rgba(220, 233, 247, 0.1);
+}
+.contact-heading {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+.contact-heading span,
+.dial-kicker {
+  color: #e7b77b;
+  letter-spacing: 0.18em;
+  font-size: 14px;
+}
+.contact-heading h1,
+.dial-panel h2 {
+  font-size: 38px;
+  margin: 8px 0 0;
+}
+.contact-heading input {
+  height: 58px;
+  border: 1px solid rgba(220, 233, 247, 0.16);
+  border-radius: 16px;
+  background: #0b1729;
+  color: #f4f5f7;
+  font-size: 18px;
+  padding: 0 20px;
+  outline: 0;
+}
+.contact-heading input:focus {
+  border-color: #e7b77b;
+  box-shadow: 0 0 0 4px rgba(231, 183, 123, 0.08);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  max-height: 760px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+.contact-card {
+  height: 116px;
+  padding: 18px;
+  border: 1px solid rgba(220, 233, 247, 0.16);
+  border-radius: 22px;
+  background: linear-gradient(
+    145deg,
+    rgba(25, 43, 63, 0.92),
+    rgba(9, 20, 34, 0.94)
+  );
+  color: #f4f5f7;
+  display: grid;
+  grid-template-columns: 62px 1fr auto;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.16s ease;
+}
+.contact-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(231, 183, 123, 0.45);
+}
+.contact-card.self {
+  border-color: rgba(231, 183, 123, 0.48);
+  background: linear-gradient(
+    145deg,
+    rgba(42, 52, 64, 0.92),
+    rgba(10, 21, 35, 0.96)
+  );
+}
+.contact-card:focus-visible {
+  outline: 2px solid rgba(231, 183, 123, 0.78);
+  outline-offset: 3px;
+}
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: rgba(231, 183, 123, 0.12);
+  color: #e7b77b;
+  font-size: 24px;
+  font-weight: 850;
+}
+.contact-card strong,
+.contact-card span {
+  display: block;
+}
+.contact-card strong {
+  font-size: 21px;
+}
+.contact-card span {
+  color: #8f9dad;
+  font-size: 14px;
+  margin-top: 4px;
+}
+.contact-ext {
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: rgba(66, 139, 255, 0.16);
+  color: #8ab8ff;
+  font-weight: 800;
+}
+.contact-card.self .contact-ext {
+  background: rgba(231, 183, 123, 0.18);
+  color: #e7b77b;
+}
+.intercom-user {
+  margin: 10px 0 0;
+  color: #98a8ba;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.dial-display {
+  height: 86px;
+  margin: 24px 0 24px;
+  border: 1px solid rgba(220, 233, 247, 0.18);
+  border-radius: 18px;
+  background: #0b1729;
+  display: grid;
+  place-items: center;
+  color: #58a6ff;
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+}
+.dialpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 420px;
+  margin: 0 auto;
+}
+.dialpad button {
+  height: 78px;
+  border: 1px solid rgba(220, 233, 247, 0.13);
+  border-radius: 50%;
+  background: rgba(12, 26, 43, 0.78);
+  color: #f4f5f7;
+  font-size: 28px;
+  font-weight: 850;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.dialpad button:active {
+  transform: scale(0.94);
+  border-color: #e7b77b;
+}
+.dialpad small {
+  display: block;
+  font-size: 10px;
+  color: #8292a4;
+  letter-spacing: 0.12em;
+}
+.call-button {
+  width: 420px;
+  height: 74px;
+  margin: 28px auto 0;
+  display: block;
+  border: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #35cf76, #16a856);
+  color: #07111d;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+}
+.call-layer {
+  position: absolute;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(4, 11, 20, 0.84);
+  backdrop-filter: blur(9px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+}
+.call-layer.open {
+  opacity: 1;
+  visibility: visible;
+}
+.call-card {
+  width: 560px;
+  padding: 54px;
+  text-align: center;
+  border: 1px solid rgba(220, 233, 247, 0.16);
+  border-radius: 32px;
+  background: linear-gradient(145deg, #172b40, #0b192a);
+}
+.call-pulse {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(53, 207, 118, 0.13);
+  border: 1px solid rgba(53, 207, 118, 0.4);
+  animation: pulseCall 1.5s infinite;
+}
+.call-pulse svg {
+  width: 62px;
+  height: 62px;
+  fill: none;
+  stroke: #35cf76;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.call-card span {
+  color: #35cf76;
+  letter-spacing: 0.18em;
+}
+.call-card h2 {
+  font-size: 35px;
+  margin: 12px 0;
+}
+.call-card p {
+  font-size: 24px;
+  color: #e7b77b;
+}
+.call-card button {
+  width: 240px;
+  height: 60px;
+  border: 1px solid rgba(255, 105, 105, 0.5);
+  border-radius: 18px;
+  background: #ef4b55;
+  color: white;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+@keyframes pulseCall {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(53, 207, 118, 0.28);
+  }
+  50% {
+    box-shadow: 0 0 0 22px rgba(53, 207, 118, 0);
+  }
+}

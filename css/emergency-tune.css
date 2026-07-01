@@ -1,0 +1,18 @@
+.emergency-card {
+  height: 340px;
+  padding-bottom: 104px;
+}
+
+.emergency-card strong {
+  margin-top: 28px;
+}
+
+.emergency-card span {
+  line-height: 1.55;
+  max-width: 92%;
+}
+
+.emergency-card b {
+  bottom: 34px;
+}
+

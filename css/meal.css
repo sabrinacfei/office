@@ -1,0 +1,1273 @@
+.meal-canvas {
+  background:
+    radial-gradient(circle at 86% 24%, rgba(47, 120, 170, .18), transparent 31%),
+    linear-gradient(180deg, #0b1729, #081321);
+}
+
+.meal-main {
+  height: 986px;
+  position: relative;
+  z-index: 1;
+  padding: 24px 54px 42px;
+}
+
+.meal-progress {
+  height: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.meal-progress span {
+  height: 32px;
+  border: 1px solid rgba(220, 233, 247, .14);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: #7f8fa1;
+  background: rgba(7, 17, 29, .48);
+  font-size: 13px;
+}
+
+.meal-progress span.active {
+  color: #101923;
+  border-color: #e7b77b;
+  background: linear-gradient(135deg, #e1ad6b, #bd7f43);
+  font-weight: 850;
+}
+
+.meal-step {
+  display: none;
+  height: 880px;
+}
+
+.meal-step.active {
+  display: block;
+}
+
+.meal-heading {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.eyebrow {
+  color: #e7b77b;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.meal-heading h1,
+.menu-panel h1,
+.confirm-panel h1,
+.done-card h1 {
+  margin: 9px 0 8px;
+  font-size: 38px;
+  letter-spacing: .05em;
+}
+
+.meal-heading p,
+.menu-panel p {
+  margin: 0;
+  color: #96a5b4;
+  font-size: 18px;
+}
+
+.meal-heading > strong {
+  padding: 10px 16px;
+  border: 1px solid rgba(231, 183, 123, .45);
+  border-radius: 13px;
+  color: #e7b77b;
+  background: rgba(231, 183, 123, .08);
+  font-size: 15px;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.store-card {
+  height: 560px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  background: transparent;
+  color: #f4f5f7;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.store-card img {
+  width: 100%;
+  height: 248px;
+  display: block;
+  object-fit: cover;
+  border-radius: 18px;
+  opacity: .94;
+  filter: saturate(.92) brightness(.82);
+  -webkit-mask-image: linear-gradient(180deg, #000 0 76%, rgba(0, 0, 0, .78) 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0 76%, rgba(0, 0, 0, .78) 88%, transparent 100%);
+}
+
+.store-card div {
+  min-height: 332px;
+  margin-top: -20px;
+  padding: 40px 22px 22px;
+  position: relative;
+  background: transparent;
+}
+
+.store-card div:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -78px;
+  height: 98px;
+  background: linear-gradient(180deg, transparent, rgba(10, 22, 36, .2));
+  pointer-events: none;
+}
+
+.store-card:hover {
+  background: transparent;
+}
+
+.store-card span {
+  display: inline-flex;
+  position: relative;
+  z-index: 1;
+  padding: 5px 9px;
+  border-radius: 9px;
+  background: rgba(231, 183, 123, .12);
+  color: #e7b77b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.store-card h2 {
+  position: relative;
+  z-index: 1;
+  margin: 14px 0 8px;
+  font-size: 25px;
+}
+
+.store-card p {
+  position: relative;
+  z-index: 1;
+  min-height: 64px;
+  margin: 0;
+  color: #95a3b3;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.store-card small {
+  display: block;
+  position: relative;
+  z-index: 1;
+  margin-top: 14px;
+  color: #4cd58d;
+  font-size: 13px;
+}
+
+.store-card b {
+  position: relative;
+  z-index: 1;
+  height: 46px;
+  margin-top: 22px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  background: #22c96f;
+  color: #07111d;
+  font-size: 16px;
+}
+
+.meal-layout,
+.payment-layout {
+  height: 830px;
+  display: grid;
+  grid-template-columns: 1fr 430px;
+  gap: 30px;
+  align-items: stretch;
+  padding-top: 26px;
+}
+
+.menu-panel,
+.order-panel,
+.confirm-panel,
+.pay-panel,
+.done-card {
+  border: 1px solid rgba(220, 233, 247, .14);
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(26, 45, 66, .94), rgba(11, 23, 38, .96));
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .22);
+}
+
+.menu-panel {
+  padding: 34px 40px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-back {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  height: 42px;
+  margin-bottom: 22px;
+  padding: 0 15px;
+  border: 1px solid rgba(220, 233, 247, .18);
+  border-radius: 14px;
+  background: rgba(8, 18, 31, .72);
+  color: #dce5ee;
+  cursor: pointer;
+}
+
+.item-list {
+  flex: 1;
+  min-height: 0;
+  margin-top: 28px;
+  padding-right: 10px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.item-list::-webkit-scrollbar,
+.order-list::-webkit-scrollbar {
+  width: 7px;
+}
+
+.item-list::-webkit-scrollbar-thumb,
+.order-list::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(231, 183, 123, .36);
+}
+
+.item-list::-webkit-scrollbar-track,
+.order-list::-webkit-scrollbar-track {
+  background: rgba(220, 233, 247, .04);
+}
+
+.item-row {
+  min-height: 86px;
+  display: grid;
+  grid-template-columns: 1fr 110px 148px;
+  gap: 18px;
+  align-items: center;
+  border-bottom: 1px solid rgba(220, 233, 247, .09);
+}
+
+.item-row h3 {
+  margin: 0 0 5px;
+  font-size: 22px;
+}
+
+.item-row p {
+  margin: 0;
+  color: #8796a8;
+  font-size: 14px;
+}
+
+.item-row > strong {
+  color: #22d37b;
+  font-size: 22px;
+  text-align: right;
+}
+
+.qty {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 9px;
+}
+
+.qty button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(220, 233, 247, .18);
+  border-radius: 50%;
+  background: #0b1729;
+  color: #f4f5f7;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.qty button:last-child {
+  border-color: #22c96f;
+  background: #22c96f;
+  color: #07111d;
+  font-weight: 900;
+}
+
+.qty span {
+  width: 22px;
+  text-align: center;
+  font-weight: 850;
+}
+
+.order-panel {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-head,
+.order-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-head h2 {
+  margin: 0;
+  font-size: 27px;
+}
+
+.order-head span,
+.order-total strong {
+  color: #e7b77b;
+}
+
+.order-list {
+  flex: 1;
+  min-height: 0;
+  margin: 24px 0;
+  color: #77879a;
+  overflow-y: auto;
+  padding-right: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.order-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(220, 233, 247, .08);
+  color: #dce5ee;
+}
+
+.order-line span {
+  color: #8f9dad;
+  font-size: 13px;
+}
+
+.order-note {
+  color: #b8c2ce;
+  font-size: 15px;
+}
+
+.order-note textarea {
+  width: 100%;
+  height: 92px;
+  margin-top: 10px;
+  padding: 14px;
+  resize: none;
+  border: 1px solid rgba(220, 233, 247, .14);
+  border-radius: 14px;
+  outline: 0;
+  background: #0b1729;
+  color: #f4f5f7;
+}
+
+.order-total {
+  height: 66px;
+  margin-top: 12px;
+  border-top: 1px solid rgba(220, 233, 247, .12);
+  font-size: 18px;
+}
+
+.order-total strong {
+  font-size: 30px;
+}
+
+.meal-primary {
+  height: 60px;
+  border: 1px solid #e7b77b;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #dda866, #b97b40);
+  color: #101923;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.meal-primary:disabled {
+  opacity: .38;
+  cursor: not-allowed;
+  filter: saturate(.45);
+}
+
+.payment-layout {
+  grid-template-columns: 1fr 520px;
+}
+
+.confirm-panel,
+.pay-panel {
+  padding: 42px 48px;
+}
+
+.confirm-panel h1 {
+  font-size: 50px;
+}
+
+.confirm-panel .eyebrow {
+  font-size: 18px;
+}
+
+.confirm-list {
+  margin-top: 42px;
+}
+
+.confirm-list div,
+.done-card dl div {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  padding: 23px 0;
+  border-bottom: 1px solid rgba(220, 233, 247, .10);
+}
+
+.confirm-list dt,
+.done-card dt {
+  color: #8796a8;
+  font-size: 25px;
+  font-weight: 750;
+}
+
+.confirm-list dd,
+.done-card dd {
+  margin: 0;
+  color: #f4f5f7;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.pay-panel {
+  text-align: center;
+}
+
+.linepay-mark {
+  color: #22c96f;
+  font-weight: 850;
+  letter-spacing: .08em;
+}
+
+.pay-panel h2 {
+  margin: 16px 0 6px;
+  font-size: 42px;
+}
+
+.pay-panel > strong {
+  display: block;
+  color: #22d37b;
+  font-size: 50px;
+}
+
+.payment-methods {
+  margin: 34px 0 32px;
+  display: grid;
+  gap: 18px;
+}
+
+.payment-method {
+  min-height: 142px;
+  padding: 22px 24px;
+  border: 1px solid rgba(220, 233, 247, .15);
+  border-radius: 22px;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 18px;
+  align-items: center;
+  background: rgba(8, 18, 31, .55);
+  color: #f4f5f7;
+  text-align: left;
+  cursor: pointer;
+}
+
+.payment-method.selected {
+  border-color: rgba(231, 183, 123, .72);
+  background: linear-gradient(135deg, rgba(231, 183, 123, .18), rgba(8, 18, 31, .66));
+}
+
+.payment-method > span {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(231, 183, 123, .16);
+  color: #e7b77b;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.payment-method strong,
+.payment-method small {
+  display: block;
+}
+
+.payment-method strong {
+  font-size: 28px;
+}
+
+.payment-method small {
+  margin-top: 7px;
+  color: #9caaba;
+  font-size: 16px;
+}
+
+.payment-logos {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+.payment-logos img {
+  height: 36px;
+  width: auto;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.done-step {
+  display: none;
+  place-items: center;
+}
+
+.done-step.active {
+  display: grid;
+}
+
+.done-card {
+  width: 620px;
+  padding: 48px;
+  text-align: center;
+}
+
+.done-check {
+  width: 106px;
+  height: 106px;
+  margin: 0 auto 24px;
+  border: 1px solid rgba(83, 198, 142, .42);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(83, 198, 142, .12);
+  color: #63d49b;
+  font-size: 58px;
+}
+
+.done-card dl {
+  margin: 28px 0;
+  text-align: left;
+}
+
+.done-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.done-actions button {
+  height: 58px;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.done-actions button:first-child {
+  border: 1px solid rgba(220, 233, 247, .18);
+  background: transparent;
+  color: #dce5ee;
+}
+
+.done-actions button:last-child {
+  border: 1px solid #e7b77b;
+  background: linear-gradient(135deg, #dda866, #b97b40);
+  color: #101923;
+  font-weight: 900;
+}
+
+:root {
+  --meal-gold: #d6a15f;
+  --meal-gold-soft: #e7bd83;
+}
+
+.meal-canvas {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(214, 161, 95, .055), transparent 30%),
+    radial-gradient(circle at 82% 18%, rgba(48, 93, 132, .10), transparent 34%),
+    linear-gradient(180deg, #07111f 0%, #06101d 62%, #060c17 100%);
+}
+
+.store-grid {
+  gap: 26px;
+  align-items: start;
+}
+
+.store-card {
+  position: relative;
+  height: 520px;
+  padding: 0;
+  overflow: visible;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #eef2f6;
+  text-align: left;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: storeFloatIn .55s cubic-bezier(.2, .8, .2, 1) forwards;
+  transition: transform .32s ease, filter .32s ease;
+}
+
+.store-card:nth-child(1) { animation-delay: .02s; }
+.store-card:nth-child(2) { animation-delay: .09s; }
+.store-card:nth-child(3) { animation-delay: .16s; }
+.store-card:nth-child(4) { animation-delay: .23s; }
+.store-card:nth-child(5) { animation-delay: .30s; }
+
+.store-card:hover {
+  transform: translateY(-8px);
+  filter: brightness(1.02);
+}
+
+.store-card img {
+  width: 100%;
+  height: 286px;
+  display: block;
+  object-fit: cover;
+  border-radius: 24px;
+  opacity: .78;
+  filter: saturate(.78) brightness(.56) contrast(1.02);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, .34);
+  -webkit-mask-image: linear-gradient(180deg, #000 0 72%, rgba(0, 0, 0, .70) 86%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0 72%, rgba(0, 0, 0, .70) 86%, transparent 100%);
+  transition: transform .42s ease, filter .42s ease, opacity .42s ease, box-shadow .42s ease;
+}
+
+.store-card:hover img {
+  transform: scale(1.025);
+  opacity: .88;
+  filter: saturate(.86) brightness(.66) contrast(1.04);
+  box-shadow: 0 28px 58px rgba(0, 0, 0, .42);
+}
+
+.store-card div {
+  min-height: auto;
+  margin-top: -18px;
+  padding: 30px 4px 0;
+  position: relative;
+  background: transparent !important;
+}
+
+.store-card div::before {
+  display: none !important;
+}
+
+.store-card span {
+  display: inline-flex;
+  position: relative;
+  z-index: 1;
+  padding: 5px 9px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(214, 161, 95, .10);
+  color: rgba(231, 189, 131, .82);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.store-card h2 {
+  position: relative;
+  z-index: 1;
+  margin: 14px 0 8px;
+  font-size: 27px;
+  letter-spacing: .02em;
+  color: rgba(245, 246, 248, .94);
+  transition: color .26s ease, transform .26s ease;
+}
+
+.store-card:hover h2 {
+  color: #fff1d8;
+  transform: translateX(3px);
+}
+
+.store-card p {
+  position: relative;
+  z-index: 1;
+  min-height: 58px;
+  margin: 0;
+  color: rgba(154, 168, 184, .76);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.store-card small {
+  display: none !important;
+}
+
+.store-card b {
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  height: auto;
+  margin-top: 16px;
+  padding: 0 0 6px;
+  border: 0 !important;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent !important;
+  color: rgba(231, 189, 131, .86) !important;
+  font-size: 15px;
+  font-weight: 900;
+  box-shadow: none !important;
+  transition: gap .24s ease, color .24s ease;
+}
+
+.store-card b::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(214, 161, 95, .82), transparent);
+  transform-origin: left;
+  transform: scaleX(.48);
+  transition: transform .24s ease;
+}
+
+.store-card b::after {
+  content: "›";
+  font-size: 21px;
+  line-height: 1;
+}
+
+.store-card:hover b {
+  gap: 13px;
+  color: #f2cf9b !important;
+}
+
+.store-card:hover b::before {
+  transform: scaleX(1);
+}
+
+.item-row > strong,
+.order-total strong,
+.pay-panel > strong,
+.linepay-mark {
+  color: var(--meal-gold-soft) !important;
+}
+
+.qty button:last-child {
+  border-color: rgba(214, 161, 95, .72) !important;
+  background: linear-gradient(135deg, #d6a15f, #a96d38) !important;
+  color: #101923 !important;
+}
+
+.meal-primary,
+.done-actions button:last-child {
+  border-color: rgba(214, 161, 95, .72) !important;
+  background: linear-gradient(135deg, #d6a15f, #a96d38) !important;
+  color: #101923 !important;
+  box-shadow: 0 14px 30px rgba(169, 109, 56, .18);
+}
+
+.done-check {
+  border-color: rgba(214, 161, 95, .40) !important;
+  background: rgba(214, 161, 95, .10) !important;
+  color: var(--meal-gold-soft) !important;
+}
+
+@keyframes storeFloatIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* =====================================================
+   Store cards v6：透明黑底小卡 + 淡外框 + 圖片過渡效果
+   貼在 meal.css 最下面
+===================================================== */
+
+.meal-canvas {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(202, 145, 78, .08), transparent 32%),
+    radial-gradient(circle at 82% 22%, rgba(42, 92, 128, .12), transparent 34%),
+    linear-gradient(180deg, #07111f 0%, #06101d 58%, #050b15 100%);
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+/* 小卡本體：透明黑底 + 淡淡外框 */
+.store-card {
+  position: relative;
+  height: 500px;
+  padding: 13px;
+  border: 1px solid rgba(231, 183, 123, .16) !important;
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, rgba(10, 18, 30, .72), rgba(4, 9, 17, .82)) !important;
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, .34),
+    0 0 0 1px rgba(255, 255, 255, .025) inset;
+  color: #f3f5f7;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: storeCardIn .55s cubic-bezier(.2, .8, .2, 1) forwards;
+  transition:
+    transform .32s ease,
+    border-color .32s ease,
+    background .32s ease,
+    box-shadow .32s ease;
+}
+
+.store-card:nth-child(1) { animation-delay: .02s; }
+.store-card:nth-child(2) { animation-delay: .09s; }
+.store-card:nth-child(3) { animation-delay: .16s; }
+.store-card:nth-child(4) { animation-delay: .23s; }
+.store-card:nth-child(5) { animation-delay: .30s; }
+
+.store-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(231, 183, 123, .38) !important;
+  background:
+    linear-gradient(180deg, rgba(14, 25, 40, .82), rgba(5, 10, 18, .90)) !important;
+  box-shadow:
+    0 28px 68px rgba(0, 0, 0, .46),
+    0 0 34px rgba(202, 145, 78, .08);
+}
+
+/* 圖片區：欄位拉長 */
+.store-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 285px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #050b13;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .34);
+}
+
+/* 圖片過渡到文字區的黑色漸層 */
+.store-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, .02) 0%,
+      rgba(0, 0, 0, .08) 45%,
+      rgba(5, 10, 18, .46) 78%,
+      rgba(5, 10, 18, .78) 100%
+    ),
+    radial-gradient(circle at 50% 100%, rgba(202, 145, 78, .13), transparent 58%);
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+
+.store-card:hover .store-image-wrap::after {
+  opacity: .88;
+}
+
+.store-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 0;
+  opacity: .84;
+  filter: saturate(.82) brightness(.66) contrast(1.04);
+  -webkit-mask-image: none;
+  mask-image: none;
+  transition:
+    transform .48s ease,
+    opacity .48s ease,
+    filter .48s ease;
+}
+
+.store-card:hover img {
+  transform: scale(1.06);
+  opacity: .96;
+  filter: saturate(.94) brightness(.76) contrast(1.06);
+}
+
+/* 文字區：跟黑底融合 */
+.store-info {
+  position: relative;
+  min-height: 165px;
+  margin-top: 0;
+  padding: 19px 6px 0;
+  background: transparent !important;
+}
+
+.store-info::before {
+  display: none !important;
+}
+
+/* 底部小金線，讓小卡更明確 */
+.store-info::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  bottom: -4px;
+  width: 48px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(202, 145, 78, .55);
+  transition: width .28s ease, background .28s ease;
+}
+
+.store-card:hover .store-info::after {
+  width: 90px;
+  background: rgba(231, 183, 123, .88);
+}
+
+.store-card span {
+  display: inline-flex;
+  padding: 4px 8px;
+  border: 1px solid rgba(231, 183, 123, .12);
+  border-radius: 999px;
+  background: rgba(202, 145, 78, .11);
+  color: rgba(231, 190, 136, .84);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .03em;
+}
+
+.store-card h2 {
+  margin: 13px 0 8px;
+  color: rgba(245, 246, 248, .96);
+  font-size: 25px;
+  letter-spacing: .02em;
+  transition: transform .26s ease, color .26s ease;
+}
+
+.store-card:hover h2 {
+  color: #fff0d6;
+  transform: translateX(4px);
+}
+
+.store-card p {
+  min-height: 50px;
+  margin: 0;
+  color: rgba(160, 174, 190, .78);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+/* 拿掉 今日供應 / 選擇店家 / 看看菜單 */
+.store-card small,
+.store-card b {
+  display: none !important;
+}
+
+/* 其他綠色一起改成暗金色 */
+.item-row > strong,
+.order-total strong,
+.pay-panel > strong,
+.linepay-mark {
+  color: #d8a768 !important;
+}
+
+.qty button:last-child {
+  border-color: rgba(216, 167, 104, .72) !important;
+  background: linear-gradient(135deg, #d8a768, #a76c38) !important;
+  color: #101923 !important;
+}
+
+.meal-primary,
+.done-actions button:last-child {
+  border-color: rgba(216, 167, 104, .72) !important;
+  background: linear-gradient(135deg, #d8a768, #a76c38) !important;
+  color: #101923 !important;
+  box-shadow: 0 14px 30px rgba(167, 108, 56, .18);
+}
+
+.done-check {
+  border-color: rgba(216, 167, 104, .40) !important;
+  background: rgba(216, 167, 104, .10) !important;
+  color: #d8a768 !important;
+}
+
+@keyframes storeCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* 分類標籤放大 */
+.store-card span {
+  padding: 7px 13px !important;
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  letter-spacing: .04em;
+  border-radius: 999px;
+  color: #f0c78f !important;
+  background: rgba(202, 145, 78, .16) !important;
+}
+
+/* 店名也稍微放大 */
+.store-card h2 {
+  font-size: 29px !important;
+  margin-top: 16px !important;
+}
+
+/* 描述文字放大一點 */
+.store-card p {
+  font-size: 15.5px !important;
+  line-height: 1.65 !important;
+  color: rgba(172, 185, 200, .82) !important;
+}
+/* 取消小卡金色外框，只保留黑底 */
+.store-card {
+  border: 0 !important;
+  background:
+    linear-gradient(180deg, rgba(10, 18, 30, .74), rgba(4, 9, 17, .86)) !important;
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, .34),
+    0 1px 0 rgba(255, 255, 255, .035) inset !important;
+}
+
+.store-card:hover {
+  border: 0 !important;
+  background:
+    linear-gradient(180deg, rgba(14, 25, 40, .84), rgba(5, 10, 18, .92)) !important;
+  box-shadow:
+    0 28px 68px rgba(0, 0, 0, .46),
+    0 0 28px rgba(0, 0, 0, .24) !important;
+}
+/* =====================================================
+   修正：圖片頂部完全貼齊，不露出黑色背景
+   貼在 meal.css 最下面
+===================================================== */
+
+.store-card {
+  height: 525px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 26px !important;
+  background: transparent !important;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, .34) !important;
+  overflow: hidden !important;
+}
+
+/* 圖片容器必須從卡片最頂部開始 */
+.store-image-wrap {
+  position: relative !important;
+  width: 100% !important;
+  height: 335px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 26px 26px 0 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+/* 圖片直接填滿容器，不要內縮 */
+.store-card img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+  border-radius: 26px 26px 0 0 !important;
+  opacity: .86 !important;
+  filter: saturate(.84) brightness(.66) contrast(1.05) !important;
+  transform: scale(1.02);
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+/* 圖片只在底部漸層，不要蓋到最上方 */
+.store-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 8, 15, 0) 0%,
+    rgba(4, 8, 15, 0) 52%,
+    rgba(4, 8, 15, .20) 68%,
+    rgba(4, 8, 15, .68) 86%,
+    rgba(4, 8, 15, .98) 100%
+  ) !important;
+}
+
+/* 黑底只在文字區，並往上接圖片底部 */
+.store-info {
+  position: relative !important;
+  z-index: 3 !important;
+  min-height: 190px !important;
+  margin-top: -58px !important;
+  padding: 0 18px 22px !important;
+  border-radius: 0 0 26px 26px !important;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 8, 15, 0) 0%,
+    rgba(4, 8, 15, .76) 32%,
+    rgba(4, 8, 15, .94) 100%
+  ) !important;
+}
+
+/* 避免之前的偽元素造成上方多一層 */
+.store-card::before,
+.store-card::after,
+.store-info::before {
+  display: none !important;
+}
+
+/* hover */
+.store-card:hover img {
+  transform: scale(1.075);
+  opacity: .96 !important;
+  filter: saturate(.94) brightness(.76) contrast(1.07) !important;
+}
+.store-card > div:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.store-card .store-image-wrap {
+  top: 0 !important;
+}
+/* =====================================================
+   最終修正：圖片頂部不能有黑底
+   原因：舊的 .store-card div 影響到 .store-image-wrap
+===================================================== */
+
+/* 卡片本體 */
+.store-card {
+  height: 525px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 26px !important;
+  background: transparent !important;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, .34) !important;
+  overflow: hidden !important;
+}
+
+/* 重點：強制取消舊的 .store-card div 設定 */
+.store-card > .store-image-wrap {
+  position: relative !important;
+  width: 100% !important;
+  height: 335px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+
+  border-radius: 26px 26px 0 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+/* 關掉舊的 div:before 遮罩 */
+.store-card > .store-image-wrap::before,
+.store-card > .store-info::before,
+.store-card div::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* 圖片貼滿頂部 */
+.store-card > .store-image-wrap img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+
+  border-radius: 26px 26px 0 0 !important;
+  opacity: .88 !important;
+  filter: saturate(.86) brightness(.68) contrast(1.05) !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+
+  transform: scale(1.02);
+  transition:
+    transform .48s ease,
+    opacity .48s ease,
+    filter .48s ease;
+}
+
+/* 圖片只在底部漸層，不要影響頂部 */
+.store-card > .store-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 8, 15, 0) 0%,
+    rgba(4, 8, 15, 0) 50%,
+    rgba(4, 8, 15, .20) 67%,
+    rgba(4, 8, 15, .68) 86%,
+    rgba(4, 8, 15, .98) 100%
+  ) !important;
+}
+
+/* 文字區才有黑底 */
+.store-card > .store-info {
+  position: relative !important;
+  z-index: 3 !important;
+
+  min-height: 190px !important;
+  margin-top: -58px !important;
+  padding: 0 18px 22px !important;
+
+  border-radius: 0 0 26px 26px !important;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 8, 15, 0) 0%,
+    rgba(4, 8, 15, .78) 32%,
+    rgba(4, 8, 15, .95) 100%
+  ) !important;
+}
+
+/* hover */
+.store-card:hover > .store-image-wrap img {
+  transform: scale(1.075);
+  opacity: .96 !important;
+  filter: saturate(.94) brightness(.76) contrast(1.07) !important;
+}

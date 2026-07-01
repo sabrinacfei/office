@@ -1,0 +1,25 @@
+.mini-logo {
+  width: 258px;
+  height: 96px;
+  margin-left: -4px;
+}
+
+.intro-panel {
+  padding-top: 58px;
+}
+
+.intro-mascot.welcome-art {
+  width: 326px;
+  height: 326px;
+  margin: 34px auto 20px;
+}
+
+.intro-panel h1 {
+  font-size: 41px;
+}
+
+.intro-panel > p {
+  font-size: 20px;
+  line-height: 1.9;
+}
+

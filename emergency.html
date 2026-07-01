@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AMBASSADOR 國賓影城｜緊急聯繫</title>
+  <link rel="stylesheet" href="css/visitor.css?v=20260624-1">
+  <link rel="stylesheet" href="css/emergency.css?v=20260624-3">
+  <link rel="stylesheet" href="css/emergency-icons.css?v=20260624-1">
+  <link rel="stylesheet" href="css/emergency-tune.css?v=20260624-1">
+  <link rel="stylesheet" href="css/kiosk-animations.css?v=20260624-1">
+</head>
+<body>
+  <div class="kiosk-stage"><div class="kiosk-screen"><div class="visitor-canvas emergency-canvas">
+    <header class="visitor-header emergency-header">
+      <button class="back-button" id="backButton" type="button"><span>‹</span> 返回首頁</button>
+      <div class="page-title"><svg viewBox="0 0 48 48"><path d="M24 40s15-8 15-20V9l-15-5L9 9v11c0 12 15 20 15 20Z"/><path d="M24 14v11M24 31h.1"/></svg><div><strong>緊急聯繫</strong><small>EMERGENCY CONTACT</small></div></div>
+      <div class="header-time"><span></span><strong id="headerTime">14:25</strong></div>
+    </header>
+    <main class="emergency-main">
+      <section class="emergency-view active" id="choiceView">
+        <div class="emergency-title"><span>PLEASE SELECT</span><h1>請選擇緊急服務</h1><p>所有操作都將留下時間紀錄，請確認狀況後再執行。</p></div>
+        <div class="emergency-cards">
+          <button class="emergency-card call" type="button" data-action="call"><i>☎</i><strong>聯絡保全</strong><span>立即撥打保全分機</span><b>立即通話</b></button>
+          <button class="emergency-card lock" type="button" data-action="lock"><i><svg class="lock-svg" viewBox="0 0 64 64"><path d="M18 29v-8c0-8 6-14 14-14s14 6 14 14v8"/><rect x="13" y="29" width="38" height="27" rx="6"/><path d="M32 40v7"/></svg></i><strong>保全上鎖</strong><span>需輸入授權碼</span><b>執行上鎖</b></button>
+          <button class="emergency-card unlock" type="button" data-action="unlock"><i><svg class="lock-svg" viewBox="0 0 64 64"><path d="M18 29v-7c0-8 6-14 14-14 6 0 11 4 13 9"/><rect x="13" y="29" width="38" height="27" rx="6"/><path d="M32 40v7"/></svg></i><strong>保全解鎖</strong><span>需輸入授權碼</span><b>執行解鎖</b></button>
+        </div>
+      </section>
+      <section class="emergency-view" id="pinView" aria-hidden="true">
+        <button class="section-back emergency-back" type="button" data-back="choice">‹ 返回選擇</button>
+        <div class="pin-layout">
+          <article class="pin-card">
+            <span id="pinKicker">SECURITY CODE</span>
+            <h2 id="pinTitle">輸入授權碼</h2>
+            <p>請輸入 6 碼授權碼以完成操作。</p>
+            <div class="pin-dots" id="pinDots"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <small id="pinError"></small>
+            <button class="emergency-confirm" id="pinConfirm" type="button">確認執行</button>
+          </article>
+          <div class="pin-pad" id="pinPad">
+            <button type="button">1</button><button type="button">2</button><button type="button">3</button>
+            <button type="button">4</button><button type="button">5</button><button type="button">6</button>
+            <button type="button">7</button><button type="button">8</button><button type="button">9</button>
+            <button type="button" data-action="clear">清除</button><button type="button">0</button><button type="button" data-action="delete">⌫</button>
+          </div>
+        </div>
+      </section>
+      <section class="emergency-view call-state" id="callView" aria-hidden="true">
+        <div class="security-call-pulse">☎</div>
+        <span>CALLING SECURITY</span>
+        <h2>正在連線保全室</h2>
+        <p>請保持在設備前，等待保全人員回應。</p>
+        <button class="end-emergency" id="endCall" type="button">結束通話</button>
+      </section>
+      <section class="emergency-view done-state" id="doneView" aria-hidden="true">
+        <div class="done-lock unlocked" id="doneIcon"><svg class="lock-svg" viewBox="0 0 64 64"><path d="M18 29v-7c0-8 6-14 14-14 6 0 11 4 13 9"/><rect x="13" y="29" width="38" height="27" rx="6"/><path d="M32 40v7"/></svg></div>
+        <span>SECURITY UPDATED</span>
+        <h2 id="doneTitle">大門已上鎖</h2>
+        <dl><div><dt>操作時間</dt><dd id="doneTime">14:25</dd></div><div><dt>操作者</dt><dd>員工授權</dd></div><div><dt>狀態</dt><dd id="doneStatus">已完成</dd></div></dl>
+        <button class="end-emergency" id="doneBack" type="button">返回首頁</button>
+      </section>
+    </main>
+    <div class="warning-strip">⚠ 此頁為緊急聯繫與保全控制介面，請勿任意操作</div>
+  </div></div></div>
+  <script src="js/emergency.js?v=20260624-4"></script>
+</body>
+</html>

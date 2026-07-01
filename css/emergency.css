@@ -1,0 +1,314 @@
+.emergency-canvas {
+  background: radial-gradient(
+      circle at 50% 30%,
+      rgba(239, 75, 85, 0.1),
+      transparent 33%
+    ),
+    linear-gradient(180deg, #0b1729, #081321);
+}
+.emergency-header {
+  border-top: 5px solid rgba(239, 75, 85, 0.72);
+}
+.emergency-header .page-title svg {
+  stroke: #ef4b55;
+}
+.emergency-main {
+  height: 986px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 70px;
+}
+.emergency-view {
+  position: absolute;
+  inset: 70px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(18px) scale(0.985);
+  transition: 0.24s ease;
+}
+.emergency-view.active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.emergency-title {
+  text-align: center;
+  margin-top: 42px;
+}
+.emergency-title span,
+.pin-card span,
+.call-state span,
+.done-state span {
+  color: #ef4b55;
+  letter-spacing: 0.2em;
+  font-size: 15px;
+}
+.emergency-title h1 {
+  font-size: 46px;
+  margin: 12px 0;
+}
+.emergency-title p {
+  font-size: 18px;
+  color: #98a6b6;
+}
+.emergency-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin: 62px auto 0;
+  width: 1280px;
+}
+.emergency-card {
+  height: 310px;
+  text-align: left;
+  padding: 34px;
+  border: 1px solid rgba(220, 233, 247, 0.16);
+  border-radius: 30px;
+  background: linear-gradient(
+    145deg,
+    rgba(24, 41, 60, 0.94),
+    rgba(9, 20, 34, 0.96)
+  );
+  color: #f4f5f7;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.emergency-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(239, 75, 85, 0.55);
+}
+.emergency-card i {
+  width: 70px;
+  height: 70px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  background: rgba(239, 75, 85, 0.12);
+  color: #ff747c;
+  font-style: normal;
+  font-size: 31px;
+  font-weight: 900;
+}
+.emergency-card.lock i {
+  background: rgba(231, 183, 123, 0.12);
+  color: #e7b77b;
+}
+.emergency-card.unlock i {
+  background: rgba(47, 200, 148, 0.12);
+  color: #35cf76;
+}
+.emergency-card strong,
+.emergency-card span,
+.emergency-card b {
+  display: block;
+}
+.emergency-card strong {
+  font-size: 32px;
+  margin-top: 34px;
+}
+.emergency-card span {
+  font-size: 18px;
+  color: #93a2b2;
+  margin-top: 8px;
+}
+.emergency-card b {
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  bottom: 32px;
+  height: 50px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  background: #ef4b55;
+  color: white;
+}
+.emergency-card.lock b {
+  background: #e0a13d;
+  color: #111b26;
+}
+.emergency-card.unlock b {
+  background: #1fbe82;
+  color: #07111d;
+}
+.warning-strip {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: rgba(105, 37, 8, 0.92);
+  color: #e7b77b;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+.emergency-back {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.pin-layout {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: 70px;
+  align-items: center;
+  padding: 0 230px;
+}
+.pin-card {
+  padding: 52px;
+  border: 1px solid rgba(220, 233, 247, 0.14);
+  border-radius: 32px;
+  background: linear-gradient(
+    145deg,
+    rgba(27, 47, 68, 0.94),
+    rgba(10, 22, 36, 0.96)
+  );
+}
+.pin-card h2 {
+  font-size: 42px;
+  margin: 14px 0;
+}
+.pin-card p {
+  font-size: 18px;
+  color: #98a6b6;
+}
+.pin-dots {
+  display: flex;
+  gap: 14px;
+  margin: 42px 0 16px;
+}
+.pin-dots i {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(220, 233, 247, 0.24);
+  background: rgba(7, 17, 29, 0.65);
+}
+.pin-dots i.filled {
+  background: #f4f5f7;
+  box-shadow: 0 0 18px rgba(231, 183, 123, 0.18);
+}
+.pin-card small {
+  display: block;
+  height: 24px;
+  color: #e98b8b;
+  font-size: 15px;
+}
+.emergency-confirm,
+.end-emergency {
+  height: 66px;
+  border: 0;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ef676f, #d83c48);
+  color: white;
+  font-size: 22px;
+  font-weight: 850;
+  cursor: pointer;
+}
+.emergency-confirm {
+  width: 100%;
+  margin-top: 16px;
+}
+.pin-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.pin-pad button {
+  height: 82px;
+  border: 1px solid rgba(220, 233, 247, 0.13);
+  border-radius: 50%;
+  background: rgba(12, 26, 43, 0.8);
+  color: #f4f5f7;
+  font-size: 28px;
+  font-weight: 850;
+  cursor: pointer;
+}
+.pin-pad button:active {
+  transform: scale(0.94);
+  border-color: #e7b77b;
+}
+.call-state,
+.done-state {
+  text-align: center;
+  display: grid;
+  place-items: center;
+  align-content: center;
+}
+.security-call-pulse,
+.done-lock {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 28px;
+  font-size: 58px;
+}
+.security-call-pulse {
+  background: rgba(239, 75, 85, 0.13);
+  border: 1px solid rgba(239, 75, 85, 0.44);
+  color: #ff747c;
+  animation: alarmPulse 1.4s infinite;
+}
+.done-lock {
+  background: rgba(47, 200, 148, 0.12);
+  border: 1px solid rgba(47, 200, 148, 0.42);
+  color: #35cf76;
+}
+.call-state h2,
+.done-state h2 {
+  font-size: 44px;
+  margin: 12px 0;
+}
+.call-state p {
+  font-size: 20px;
+  color: #98a6b6;
+}
+.end-emergency {
+  width: 260px;
+  margin-top: 26px;
+}
+.done-state dl {
+  width: 540px;
+  margin: 28px auto;
+  padding: 22px;
+  border-radius: 22px;
+  background: rgba(7, 17, 29, 0.5);
+  border: 1px solid rgba(220, 233, 247, 0.12);
+}
+.done-state dl div {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  padding: 12px;
+  border-bottom: 1px solid rgba(220, 233, 247, 0.08);
+}
+.done-state dl div:last-child {
+  border-bottom: 0;
+}
+.done-state dt {
+  color: #8494a6;
+}
+.done-state dd {
+  margin: 0;
+  text-align: right;
+  color: #f4f5f7;
+  font-weight: 800;
+}
+@keyframes alarmPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 75, 85, 0.34);
+  }
+  50% {
+    box-shadow: 0 0 0 28px rgba(239, 75, 85, 0);
+  }
+}

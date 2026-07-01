@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AMBASSADOR 國賓影城｜對講機</title>
+  <link rel="stylesheet" href="css/visitor.css?v=20260624-1">
+  <link rel="stylesheet" href="css/intercom.css?v=20260624-1">
+  <link rel="stylesheet" href="css/intercom-tune.css?v=20260624-1">
+  <link rel="stylesheet" href="css/kiosk-animations.css?v=20260624-1">
+  <link rel="stylesheet" href="css/live-intercom.css?v=202607012050">
+</head>
+<body>
+  <div class="kiosk-stage"><div class="kiosk-screen"><div class="visitor-canvas intercom-canvas">
+    <header class="visitor-header">
+      <button class="back-button" id="backButton" type="button"><span>‹</span> 返回首頁</button>
+      <div class="page-title"><svg viewBox="0 0 48 48"><rect x="13" y="9" width="22" height="32" rx="4"/><path d="M18 15h12M18 21h12M24 28a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM31 5v4"/></svg><div><strong>對講機</strong><small>INTERCOM</small></div></div>
+      <div class="header-time"><span></span><strong id="headerTime">14:25</strong></div>
+    </header>
+    <main class="intercom-main">
+      <section class="contact-panel">
+        <div class="contact-heading"><div><span>COMMON CONTACTS</span><h1>常用聯絡人</h1></div><input id="contactSearch" type="search" placeholder="搜尋姓名或分機"></div>
+        <div class="contact-grid" id="contactGrid"></div>
+      </section>
+      <section class="dial-panel">
+        <span class="dial-kicker">DIRECT CALL</span>
+        <h2>直接撥打分機</h2>
+        <p class="intercom-user" id="intercomUser">目前登入：--</p>
+        <div class="dial-display" id="dialDisplay">10_</div>
+        <div class="dialpad" id="dialpad">
+          <button type="button">1<small></small></button><button type="button">2<small>ABC</small></button><button type="button">3<small>DEF</small></button>
+          <button type="button">4<small>GHI</small></button><button type="button">5<small>JKL</small></button><button type="button">6<small>MNO</small></button>
+          <button type="button">7<small>PQRS</small></button><button type="button">8<small>TUV</small></button><button type="button">9<small>WXYZ</small></button>
+          <button type="button" data-action="clear">清除</button><button type="button">0<small>+</small></button><button type="button" data-action="delete">⌫</button>
+        </div>
+        <button class="call-button" id="callButton" type="button">撥打</button>
+      </section>
+    </main>
+    <section class="call-layer" id="callLayer" aria-hidden="true"><div class="call-card"><div class="call-pulse"><svg viewBox="0 0 48 48"><path d="M5 8c6-3 10 7 7 11l-2 2c4 8 9 13 17 17l2-2c4-3 14 1 11 7-2 5-8 6-14 4C14 42 6 34 1 22-1 16 0 10 5 8Z"/></svg></div><span>CALLING</span><h2 id="callName">正在撥打分機</h2><p id="callNumber"></p><button id="endCallButton" type="button">結束通話</button></div></section>
+  </div></div></div>
+  <script src="js/office-config.js?v=202607012050"></script>
+  <script src="js/live-intercom.js?v=202607012050"></script>
+  <script src="js/intercom.js?v=202607012050"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.dial-display.matched {
+  color: #f4f5f7;
+  font-size: 40px;
+  letter-spacing: .06em;
+  border-color: rgba(53, 207, 118, .42);
+  box-shadow: 0 0 0 4px rgba(53, 207, 118, .07);
+}
+
+.call-card p:empty {
+  display: none;
+}
