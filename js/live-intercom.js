@@ -27,6 +27,7 @@
   let remoteAudio;
   let toastBox;
   let overlayHost;
+  let connectionWarningShown = false;
 
   function normalizeExt(value) {
     return String(value || '').replace(/\D/g,'');
@@ -101,7 +102,22 @@
     toastBox.textContent = message;
     toastBox.classList.add('show');
     window.clearTimeout(showToast.timer);
-    showToast.timer = window.setTimeout(() => toastBox.classList.remove('show'),2400);
+    showToast.timer = window.setTimeout(() => toastBox.classList.remove('show'),message.length > 18 ? 5200 : 2400);
+  }
+
+  function isStaticPagesHost() {
+    return /\.github\.io$/i.test(location.hostname);
+  }
+
+  function connectionFailureMessage() {
+    if (isStaticPagesHost()) return 'GitHub Pages 只能顯示網頁，不能啟動即時對講伺服器';
+    return '請用 node intercom-server.js 啟動即時對講伺服器';
+  }
+
+  function warnSignalDisconnected() {
+    if (connectionWarningShown) return;
+    connectionWarningShown = true;
+    showToast(connectionFailureMessage());
   }
 
   function showCall(state, data = {}) {
@@ -152,9 +168,16 @@
   function connectSignal() {
     window.clearTimeout(reconnectTimer);
     if (!currentUser?.account || !location.host || socket?.readyState === WebSocket.OPEN || socket?.readyState === WebSocket.CONNECTING) return;
+    if (isStaticPagesHost()) {
+      warnSignalDisconnected();
+      return;
+    }
     const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
     socket = new WebSocket(`${protocol}//${location.host}/intercom-signal`);
-    socket.addEventListener('open',registerClient);
+    socket.addEventListener('open',() => {
+      connectionWarningShown = false;
+      registerClient();
+    });
     socket.addEventListener('message',event => {
       try {
         handleSignal(JSON.parse(event.data));
@@ -167,7 +190,7 @@
       reconnectTimer = window.setTimeout(connectSignal,1800);
     });
     socket.addEventListener('error',() => {
-      showToast('即時對講伺服器未連線');
+      warnSignalDisconnected();
     });
   }
 
@@ -264,7 +287,7 @@
     }
     if (!canSignal()) {
       connectSignal();
-      showToast('即時對講伺服器尚未連線');
+      warnSignalDisconnected();
       return false;
     }
     const callId = `call-${Date.now()}-${Math.random().toString(36).slice(2,8)}`;

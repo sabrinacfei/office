@@ -208,12 +208,12 @@
     {id:'system-001',type:'系統通知',title:'6 月份排班公告已更新',body:'請至排班公告查看今日班表與內部提醒。',time:'10 分鐘前',target:'employee.html?view=schedule'},
     {id:'repair-002',type:'申請維修通知',title:'餐飲區爆米花機卡住',body:'請值班主管確認設備狀態並補充照片。',time:'25 分鐘前',target:'employee.html?view=bulk'}
   ];
-  const randomNotificationTemplates = [
-    {type:'申請維修通知',title:'影廳 2 號音響設備待確認',body:'同仁回報音量忽大忽小，請協助查看。',target:'employee.html?view=bulk'},
-    {type:'申請維修通知',title:'售票設備需要補檢',body:'取票機讀取速度偏慢，請確認現場狀態。',target:'employee.html?view=bulk'},
-    {type:'申請維修通知',title:'餐飲區設備回報',body:'飲料機出杯異常，請值班同仁補充照片。',target:'employee.html?view=bulk'},
+  const systemNotificationTemplates = [
     {type:'系統通知',title:'今日交接提醒',body:'請確認門窗、設備電源與環境整潔。',target:'employee.html?view=schedule'},
-    {type:'系統通知',title:'排班公告提醒',body:'請查看今日班表與內部提醒事項。',target:'employee.html?view=schedule'}
+    {type:'系統通知',title:'排班公告提醒',body:'請查看今日班表與內部提醒事項。',target:'employee.html?view=schedule'},
+    {type:'系統通知',title:'服務台巡檢提醒',body:'請確認票務、場務與餐飲區域交接狀態。',target:'employee.html'},
+    {type:'系統通知',title:'對講機狀態提醒',body:'如需跨裝置通話，請確認即時對講伺服器已啟動。',target:'intercom.html'},
+    {type:'系統通知',title:'辦公室系統提醒',body:'請保持登入資訊正確，完成作業後記得登出。',target:'homepage-ui.html'}
   ];
   let notifications = loadNotifications();
 
@@ -295,8 +295,8 @@
     });
   }
 
-  function addRandomNotification() {
-    const template = randomNotificationTemplates[Math.floor(Math.random() * randomNotificationTemplates.length)];
+  function addSystemNotification() {
+    const template = systemNotificationTemplates[Math.floor(Math.random() * systemNotificationTemplates.length)];
     const notification = {
       id:`auto-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
       ...template,
@@ -811,7 +811,7 @@
   refreshWeatherFromCwa();
   window.setInterval(refreshWeatherFromCwa,10 * 60 * 1000);
   renderNotifications();
-  window.setInterval(addRandomNotification,5 * 60 * 1000);
+  window.setInterval(addSystemNotification,5 * 60 * 1000);
   applyLoginState();
   show(0);
   restartCarouselTimer();
