@@ -28,9 +28,24 @@
   let toastBox;
   let overlayHost;
   let connectionWarningShown = false;
+  const signalUrlStorageKey = config.intercomSignalStorageKey || 'ambassadorIntercomSignalUrl';
 
   function normalizeExt(value) {
     return String(value || '').replace(/\D/g,'');
+  }
+
+  function normalizeSignalUrl(value) {
+    const raw = String(value || '').trim();
+    if (!raw) return '';
+    const withProtocol = raw.replace(/^https:\/\//i,'wss://').replace(/^http:\/\//i,'ws://');
+    if (/^wss?:\/\//i.test(withProtocol)) {
+      return withProtocol.endsWith('/intercom-signal') ? withProtocol : `${withProtocol.replace(/\/+$/,'')}/intercom-signal`;
+    }
+    return '';
+  }
+
+  function getConfiguredSignalUrl() {
+    return normalizeSignalUrl(config.intercomSignalUrl || localStorage.getItem(signalUrlStorageKey));
   }
 
   function readSession() {
@@ -110,7 +125,7 @@
   }
 
   function connectionFailureMessage() {
-    if (isStaticPagesHost()) return 'GitHub Pages 只能顯示網頁，不能啟動即時對講伺服器';
+    if (isStaticPagesHost() && !getConfiguredSignalUrl()) return '請先設定 Render 對講後端網址';
     return '請用 node intercom-server.js 啟動即時對講伺服器';
   }
 
@@ -168,12 +183,13 @@
   function connectSignal() {
     window.clearTimeout(reconnectTimer);
     if (!currentUser?.account || !location.host || socket?.readyState === WebSocket.OPEN || socket?.readyState === WebSocket.CONNECTING) return;
-    if (isStaticPagesHost()) {
+    const configuredUrl = getConfiguredSignalUrl();
+    if (isStaticPagesHost() && !configuredUrl) {
       warnSignalDisconnected();
       return;
     }
     const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-    socket = new WebSocket(`${protocol}//${location.host}/intercom-signal`);
+    socket = new WebSocket(configuredUrl || `${protocol}//${location.host}/intercom-signal`);
     socket.addEventListener('open',() => {
       connectionWarningShown = false;
       registerClient();
@@ -502,7 +518,7 @@
 
   window.addEventListener('office-session-change',refreshSession);
   window.addEventListener('storage',event => {
-    if (event.key === sessionKey) refreshSession();
+    if (event.key === sessionKey || event.key === signalUrlStorageKey) refreshSession();
   });
   window.addEventListener('beforeunload',() => {
     if (currentCall?.peerId) send({type:'hangup',to:currentCall.peerId,callId:currentCall.id});
@@ -511,6 +527,15 @@
   window.AmbassadorLiveIntercom = {
     startCallByExtension,
     reconnect:refreshSession,
+    setSignalUrl:url => {
+      const normalized = normalizeSignalUrl(url);
+      if (normalized) localStorage.setItem(signalUrlStorageKey,normalized);
+      else localStorage.removeItem(signalUrlStorageKey);
+      if (socket) socket.close();
+      socket = null;
+      refreshSession();
+      return normalized;
+    },
     getStatus:() => ({connected:canSignal(),user:currentUser,clientId})
   };
 
