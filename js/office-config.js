@@ -3,6 +3,10 @@ window.OfficeConfig = {
   loginNextKey: 'ambassadorOfficeNext',
   loginPassword: '123456',
   intercomSignalUrl: 'wss://office-intercom.onrender.com/intercom-signal',
+  intercomIceServers: [
+    { urls: 'stun:stun.l.google.com:19302' },
+    { urls: 'stun:stun1.l.google.com:19302' }
+  ],
   accounts: [
     { account: 'ticket', department: '票務部', english: 'TICKETING DEPARTMENT', role: '票務部', extension: '2011' },
     { account: 'floor', department: '場務部', english: 'FLOOR OPERATIONS', role: '場務部', extension: '2001' },

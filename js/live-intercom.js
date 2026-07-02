@@ -2,6 +2,12 @@
   const config = window.OfficeConfig || {};
   const sessionKey = config.sessionStorageKey || 'ambassadorOfficeSession';
   const accountList = config.accounts || [];
+  const intercomIceServers = Array.isArray(config.intercomIceServers) && config.intercomIceServers.length
+    ? config.intercomIceServers
+    : [
+      {urls:'stun:stun.l.google.com:19302'},
+      {urls:'stun:stun1.l.google.com:19302'}
+    ];
   const clientKey = 'ambassadorIntercomClientId';
   const clientId = sessionStorage.getItem(clientKey) || `client-${Date.now()}-${Math.random().toString(36).slice(2,9)}`;
   sessionStorage.setItem(clientKey,clientId);
@@ -106,6 +112,10 @@
     declineButton = layer.querySelector('.live-call-decline');
     hangupButton = layer.querySelector('.live-call-hangup');
     remoteAudio = layer.querySelector('.live-call-audio');
+    remoteAudio.autoplay = true;
+    remoteAudio.playsInline = true;
+    remoteAudio.muted = false;
+    remoteAudio.volume = 1;
     answerButton.addEventListener('click',acceptIncomingCall);
     declineButton.addEventListener('click',declineOrCancelCall);
     hangupButton.addEventListener('click',declineOrCancelCall);
@@ -242,9 +252,19 @@
     }
   }
 
+  function playRemoteAudio() {
+    if (!remoteAudio?.srcObject) return;
+    remoteAudio.muted = false;
+    remoteAudio.volume = 1;
+    const playPromise = remoteAudio.play?.();
+    if (playPromise?.catch) {
+      playPromise.catch(() => showToast('請點一下畫面啟用通話聲音'));
+    }
+  }
+
   function createPeer(remoteClientId) {
     closePeer(false);
-    peer = new RTCPeerConnection({iceServers:[]});
+    peer = new RTCPeerConnection({iceServers:intercomIceServers});
     localStream.getTracks().forEach(track => peer.addTrack(track,localStream));
     peer.onicecandidate = event => {
       if (event.candidate) {
@@ -257,7 +277,10 @@
       }
     };
     peer.ontrack = event => {
-      if (remoteAudio && event.streams[0]) remoteAudio.srcObject = event.streams[0];
+      if (remoteAudio && event.streams[0]) {
+        remoteAudio.srcObject = event.streams[0];
+        playRemoteAudio();
+      }
     };
     peer.onconnectionstatechange = () => {
       if (!peer) return;
@@ -269,6 +292,7 @@
           status:'語音通話已接通',
           mode:'active'
         });
+        playRemoteAudio();
       }
       if (['failed','disconnected','closed'].includes(peer.connectionState)) {
         if (currentCall) statusText.textContent = '通話已中斷';
@@ -338,6 +362,7 @@
     if (!currentCall || currentCall.direction !== 'incoming') return;
     try {
       await ensureMedia();
+      if (remoteAudio) remoteAudio.play?.().catch(() => {});
       send({
         type:'call-accept',
         to:currentCall.peerId,
@@ -418,6 +443,7 @@
       currentCall.remoteLabel = userLabel(message.from);
       try {
         await ensureMedia();
+        if (remoteAudio) remoteAudio.play?.().catch(() => {});
         createPeer(message.fromClientId);
         const offer = await peer.createOffer();
         await peer.setLocalDescription(offer);
