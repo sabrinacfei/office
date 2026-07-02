@@ -2,7 +2,7 @@ window.OfficeConfig = {
   sessionStorageKey: 'ambassadorOfficeSession',
   loginNextKey: 'ambassadorOfficeNext',
   loginPassword: '123456',
-  intercomSignalUrl: '',
+  intercomSignalUrl: 'wss://office-intercom.onrender.com/intercom-signal',
   accounts: [
     { account: 'ticket', department: '票務部', english: 'TICKETING DEPARTMENT', role: '票務部', extension: '2011' },
     { account: 'floor', department: '場務部', english: 'FLOOR OPERATIONS', role: '場務部', extension: '2001' },
